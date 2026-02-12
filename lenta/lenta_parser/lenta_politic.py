@@ -1,0 +1,174 @@
+from __future__ import annotations
+
+import json
+import re
+from datetime import datetime
+from typing import Iterable
+from urllib.parse import urljoin, urlparse
+
+from bs4 import BeautifulSoup
+
+from .config import Config
+from .utils import parse_datetime, request_with_retries, split_keywords, sanitize_tag
+
+
+_NEWS_PATH_RE = re.compile(r"^/news/\d{4}/\d{2}/\d{2}/.+/?$")
+_URL_DATE_RE = re.compile(r"/news/(\d{4})/(\d{2})/(\d{2})/")
+
+
+def fetch_section_html(config: Config) -> str:
+    return request_with_retries(config.section_url, config)
+
+
+def _normalize_news_url(href: str | None, config: Config) -> str | None:
+    if not href:
+        return None
+    if href.startswith("//"):
+        href = f"https:{href}"
+
+    if href.startswith("http://") or href.startswith("https://"):
+        if not href.startswith(config.base_url):
+            return None
+        path = urlparse(href).path
+        if not _NEWS_PATH_RE.match(path):
+            return None
+        return href
+
+    if not href.startswith("/"):
+        return None
+    if not _NEWS_PATH_RE.match(href):
+        return None
+    return urljoin(config.base_url, href)
+
+
+def extract_news_urls(html: str, config: Config) -> list[str]:
+    soup = BeautifulSoup(html, "html.parser")
+    seen = set()
+    urls: list[str] = []
+
+    for link in soup.find_all("a", href=True):
+        href = link.get("href")
+        url = _normalize_news_url(href, config)
+        if not url:
+            continue
+        if url in seen:
+            continue
+        seen.add(url)
+        urls.append(url)
+
+    return urls
+
+
+def extract_url_date(url: str) -> datetime | None:
+    path = urlparse(url).path
+    match = _URL_DATE_RE.search(path)
+    if not match:
+        return None
+    year, month, day = match.groups()
+    try:
+        return datetime(int(year), int(month), int(day))
+    except ValueError:
+        return None
+
+
+def _first_text(soup: BeautifulSoup, selectors: Iterable[str]) -> str | None:
+    for selector in selectors:
+        node = soup.select_one(selector)
+        if node:
+            text = node.get_text(" ", strip=True)
+            if text:
+                return text
+    return None
+
+
+def _extract_header(soup: BeautifulSoup) -> str | None:
+    header = _first_text(soup, ["h1 .topic-body__title", "h1.topic-body__titles", "h1"])
+    if header:
+        return header
+    return None
+
+
+def _extract_date(soup: BeautifulSoup) -> str | None:
+    meta = soup.find("meta", attrs={"property": "article:published_time"})
+    if meta and meta.get("content"):
+        return meta.get("content")
+
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            data = json.loads(script.text)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict) and item.get("@type") == "NewsArticle":
+                    value = item.get("datePublished")
+                    if value:
+                        return value
+        if isinstance(data, dict) and data.get("@type") == "NewsArticle":
+            value = data.get("datePublished")
+            if value:
+                return value
+
+    time_node = soup.find("time", datetime=True)
+    if time_node and time_node.get("datetime"):
+        return time_node.get("datetime")
+
+    return None
+
+
+def _extract_text(soup: BeautifulSoup) -> str:
+    container = soup.select_one("div.topic-body__content")
+    if not container:
+        container = soup.select_one("div.topic-body")
+
+    paragraphs = []
+    if container:
+        for paragraph in container.find_all("p"):
+            text = paragraph.get_text(" ", strip=True)
+            if not text:
+                continue
+            paragraphs.append(text)
+
+    return "\n".join(paragraphs)
+
+
+def _extract_tags(soup: BeautifulSoup) -> list[str]:
+    tags: list[str] = []
+    for node in soup.select("a.topic-header__rubric"):
+        text = node.get_text(" ", strip=True)
+        if text:
+            tags.append(sanitize_tag(text))
+
+    if tags:
+        return tags
+
+    meta = soup.find("meta", attrs={"name": "keywords"})
+    if meta and meta.get("content"):
+        return [sanitize_tag(item) for item in split_keywords(meta.get("content"))]
+
+    return []
+
+
+def parse_news(url: str, config: Config) -> dict | None:
+    html = request_with_retries(url, config)
+    soup = BeautifulSoup(html, "html.parser")
+
+    header = _extract_header(soup)
+    if not header:
+        return None
+
+    date_value = _extract_date(soup)
+    parsed_date = parse_datetime(date_value)
+    if not parsed_date:
+        return None
+
+    text = _extract_text(soup)
+    tags = _extract_tags(soup)
+
+    return {
+        "header": header,
+        "text": text,
+        "date": parsed_date.isoformat(),
+        "hashtags": tags,
+        "source_name": config.source_name,
+    }
