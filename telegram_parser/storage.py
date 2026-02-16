@@ -3,6 +3,7 @@
 from pathlib import Path
 import json
 import logging
+import os
 
 from . import config
 from . import utils
@@ -27,8 +28,21 @@ def append_jsonl(path, record):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(record, ensure_ascii=False, indent=2))
+        handle.write(json.dumps(record, ensure_ascii=False))
         handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+
+
+def write_event(path, status, item, error_message=None):
+    event = {
+        "recorded_at": utils.utc_now_iso(),
+        "status": status,
+        "item": item,
+    }
+    if error_message:
+        event["error_message"] = error_message
+    append_jsonl(path, event)
 
 
 def append_index_key(path, key):

@@ -1,6 +1,6 @@
 ﻿"""Utility helpers for normalization and formatting."""
 
-from datetime import timezone
+from datetime import datetime, timezone
 import re
 
 _VALID_USERNAME_RE = re.compile(r"^[A-Za-z0-9_]+$")
@@ -36,7 +36,11 @@ def to_utc_iso(dt):
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     dt = dt.astimezone(timezone.utc)
-    return dt.strftime("%d-%m-%Y")
+    return dt.isoformat()
+
+
+def utc_now_iso():
+    return datetime.now(timezone.utc).isoformat()
 
 
 def extract_hashtags(text):

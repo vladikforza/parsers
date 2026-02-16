@@ -41,6 +41,18 @@ def _get_messages_with_retries(client, entity, channel, offset_id):
             time.sleep(delay)
 
 
+def _build_item(channel, message):
+    text = message.raw_text or ""
+    return {
+        "message_id": message.id,
+        "text": text,
+        "date": utils.to_utc_iso(message.date),
+        "hashtags": utils.extract_hashtags(text),
+        "source_name": channel,
+        "url": f"https://t.me/{channel}/{message.id}",
+    }
+
+
 def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_dir, index_path):
     records = []
     stop_reason = None
@@ -48,6 +60,9 @@ def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_di
         entity = client.get_entity(channel)
     except Exception:
         logger.exception("failed to resolve channel entity: %s", channel)
+        error_item = {"source_name": channel}
+        output_path = storage.get_channel_output_path(output_dir, channel)
+        storage.write_event(output_path, "error", error_item, "failed to resolve channel entity")
         return records, "error"
 
     output_path = storage.get_channel_output_path(output_dir, channel)
@@ -62,9 +77,13 @@ def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_di
             continue
         except RPCError:
             logger.exception("RPC error while fetching %s", channel)
+            error_item = {"source_name": channel}
+            storage.write_event(output_path, "error", error_item, "RPC error while fetching messages")
             return records, "error"
         except Exception:
             logger.exception("unexpected error while fetching %s", channel)
+            error_item = {"source_name": channel}
+            storage.write_event(output_path, "error", error_item, "unexpected error while fetching messages")
             return records, "error"
 
         if not messages:
@@ -78,24 +97,16 @@ def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_di
                 break
             unique_key = f"{channel}:{message.id}"
             if unique_key in index_set:
+                item = _build_item(channel, message)
+                storage.write_event(output_path, "duplicate", item)
                 stop_reason = "duplicate"
                 break
 
-            text = message.raw_text or ""
-            record = {
-                "source_name": "telegram",
-                "channel": channel,
-                "message_id": message.id,
-                "date": utils.to_utc_iso(message.date),
-                "text": text,
-                "hashtags": utils.extract_hashtags(text),
-                "permalink": f"https://t.me/{channel}/{message.id}",
-            }
-
-            storage.append_jsonl(output_path, record)
+            item = _build_item(channel, message)
+            storage.write_event(output_path, "stored", item)
             storage.append_index_key(index_path, unique_key)
             index_set.add(unique_key)
-            records.append(record)
+            records.append(item)
             _sleep_with_jitter()
 
         if stop_reason:
