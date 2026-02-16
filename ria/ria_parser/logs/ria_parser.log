@@ -33,3 +33,11 @@
 2026-02-12 20:57:10 INFO Found 23 links
 2026-02-12 20:57:48 INFO Stop iteration: older than 2026-02-10T20:57:10.288725
 2026-02-12 20:57:48 INFO Iteration finished: saved 20
+2026-02-12 21:35:04 INFO Iteration start
+2026-02-12 21:35:04 INFO Found 23 links
+2026-02-12 21:35:44 INFO Stop iteration: older than 2026-02-10T21:35:04.834515
+2026-02-12 21:35:44 INFO Iteration finished: saved 20
+2026-02-16 23:37:37 INFO Iteration start
+2026-02-16 23:37:38 INFO Found 23 links
+2026-02-16 23:37:58 INFO Stop iteration: older than 2026-02-14T23:37:38.107210
+2026-02-16 23:37:58 INFO Iteration finished: saved 11

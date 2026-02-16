@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 from .config import get_config
 from .lenta_politic import extract_news_urls, extract_url_date, fetch_section_html, parse_news
-from .storage import append_header, append_news, load_header_index, normalize_header
+from .storage import append_header, load_header_index, normalize_header, write_event
 from .utils import rate_limit_sleep, setup_logger
 
 
@@ -30,10 +30,22 @@ def run_once(config) -> list[dict]:
             record = parse_news(url, config)
         except Exception as exc:  # noqa: BLE001
             logger.error("Failed to parse %s: %s", url, exc)
+            write_event(
+                "error",
+                {"source_name": config.source_name, "url": url},
+                config,
+                error_message=str(exc),
+            )
             continue
 
         if not record:
             logger.error("Missing required fields for %s", url)
+            write_event(
+                "error",
+                {"source_name": config.source_name, "url": url},
+                config,
+                error_message="missing required fields",
+            )
             continue
 
         record_date = datetime.fromisoformat(record["date"])
@@ -46,10 +58,30 @@ def run_once(config) -> list[dict]:
         normalized_header = normalize_header(record["header"])
         if not config.disable_dedup and normalized_header in header_index:
             logger.info("Stop iteration: duplicate header")
+            write_event(
+                "duplicate",
+                {
+                    "header": record["header"],
+                    "text": record["text"],
+                    "date": record["date"],
+                    "hashtags": record["hashtags"],
+                    "source_name": record["source_name"],
+                    "url": url,
+                },
+                config,
+            )
             break
 
-        results.append(record)
-        append_news(record, config)
+        item = {
+            "header": record["header"],
+            "text": record["text"],
+            "date": record["date"],
+            "hashtags": record["hashtags"],
+            "source_name": record["source_name"],
+            "url": url,
+        }
+        results.append(item)
+        write_event("stored", item, config)
         append_header(normalized_header, config)
         header_index.add(normalized_header)
 

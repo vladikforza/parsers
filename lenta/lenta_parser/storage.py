@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
 from .config import Config
+from .utils import utc_now_iso
 
 
 _INVISIBLE_RE = re.compile(r"[\u200b\u200c\u200d\uFEFF]")
@@ -41,6 +43,19 @@ def append_news(record: dict, config: Config) -> None:
     with config.data_file.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False))
         handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+
+
+def write_event(status: str, item: dict, config: Config, error_message: str | None = None) -> None:
+    event = {
+        "recorded_at": utc_now_iso(),
+        "status": status,
+        "item": item,
+    }
+    if error_message:
+        event["error_message"] = error_message
+    append_news(event, config)
 
 
 def append_header(normalized_header: str, config: Config) -> None:

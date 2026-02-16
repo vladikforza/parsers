@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import random
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Iterable
 
 import requests
@@ -92,3 +92,7 @@ def sanitize_tag(tag: str) -> str:
 def join_paragraphs(paragraphs: Iterable[str]) -> str:
     cleaned = [p.strip() for p in paragraphs if p and p.strip()]
     return "\n".join(cleaned)
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
