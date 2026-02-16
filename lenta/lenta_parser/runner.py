@@ -16,8 +16,7 @@ def run_once(config) -> list[dict]:
 
     header_index = load_header_index(config)
 
-    html = fetch_section_html(config)
-    urls = extract_news_urls(html, config)
+    urls = _collect_section_urls(config, logger)
     urls.sort(key=lambda item: extract_url_date(item) or datetime.min, reverse=True)
     logger.info("Found %s links", len(urls))
 
@@ -98,6 +97,37 @@ def run_forever(config) -> None:
         except Exception as exc:  # noqa: BLE001
             logger.error("Iteration failed: %s", exc)
         time.sleep(config.interval_minutes * 60)
+
+
+def _collect_section_urls(config, logger) -> list[str]:
+    urls: list[str] = []
+    seen = set()
+    cutoff = datetime.now() - timedelta(days=config.days_back)
+
+    for page in range(1, config.max_pages + 1):
+        section_url = config.section_url
+        if page > 1:
+            separator = "&" if "?" in section_url else "?"
+            section_url = f"{section_url}{separator}page={page}"
+
+        html = fetch_section_html(config, section_url)
+        page_urls = extract_news_urls(html, config)
+        new_count = 0
+        for url in page_urls:
+            if url in seen:
+                continue
+            seen.add(url)
+            urls.append(url)
+            new_count += 1
+
+        if new_count == 0:
+            break
+
+        oldest = min((extract_url_date(u) for u in page_urls if extract_url_date(u)), default=None)
+        if oldest and oldest < cutoff:
+            break
+
+    return urls
 
 
 def _parse_args() -> argparse.Namespace:

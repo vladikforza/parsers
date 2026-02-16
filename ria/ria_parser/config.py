@@ -52,6 +52,8 @@ class Config:
     source_name: str
     interval_minutes: int
     days_back: int
+    max_pages: int
+    article_mask: str
     timeout_seconds: int
     retry_count: int
     backoff_seconds: float
@@ -87,6 +89,8 @@ def get_config(overrides: dict | None = None) -> Config:
 
     interval_minutes = _env_int("RIA_INTERVAL_MINUTES", 10)
     days_back = _env_int("RIA_DAYS_BACK", 2)
+    max_pages = _env_int("RIA_MAX_PAGES", 10)
+    article_mask = _env_str("RIA_ARTICLE_MASK", "politics")
 
     timeout_seconds = _env_int("RIA_TIMEOUT_SECONDS", 15)
     retry_count = _env_int("RIA_RETRY_COUNT", 3)
@@ -127,6 +131,8 @@ def get_config(overrides: dict | None = None) -> Config:
         source_name=source_name,
         interval_minutes=interval_minutes,
         days_back=days_back,
+        max_pages=max_pages,
+        article_mask=article_mask,
         timeout_seconds=timeout_seconds,
         retry_count=retry_count,
         backoff_seconds=backoff_seconds,

@@ -3,6 +3,9 @@ from __future__ import annotations
 import argparse
 import time
 from datetime import datetime, timedelta
+from urllib.parse import urljoin
+
+from bs4 import BeautifulSoup
 
 from .config import get_config
 from .ria_politics import extract_news_urls, extract_url_date, fetch_section_html, parse_news
@@ -16,8 +19,7 @@ def run_once(config) -> list[dict]:
 
     header_index = load_header_index(config)
 
-    html = fetch_section_html(config)
-    urls = extract_news_urls(html, config)
+    urls = _collect_section_urls(config, logger)
     urls.sort(key=lambda item: extract_url_date(item) or datetime.min, reverse=True)
     logger.info("Found %s links", len(urls))
 
@@ -98,6 +100,50 @@ def run_forever(config) -> None:
         except Exception as exc:  # noqa: BLE001
             logger.error("Iteration failed: %s", exc)
         time.sleep(config.interval_minutes * 60)
+
+
+def _collect_section_urls(config, logger) -> list[str]:
+    urls: list[str] = []
+    seen = set()
+    cutoff = datetime.now() - timedelta(days=config.days_back)
+    next_url = (
+        f"{config.base_url}/services/archive/widget/more.html"
+        f"?id=0&date=0&articlemask={config.article_mask}&type=lenta"
+    )
+
+    for _ in range(config.max_pages):
+        if not next_url:
+            break
+        html = fetch_section_html(config, next_url)
+        soup = BeautifulSoup(html, "html.parser")
+        items = soup.select("div.lenta__item a[href]")
+        if not items:
+            break
+
+        page_urls = []
+        for node in items:
+            href = node.get("href")
+            if not href:
+                continue
+            url = urljoin(config.base_url, href)
+            page_urls.append(url)
+            if url in seen:
+                continue
+            seen.add(url)
+            urls.append(url)
+
+        next_url = None
+        for node in reversed(soup.select("div.lenta__item[data-next]")):
+            data_next = node.get("data-next")
+            if data_next:
+                next_url = urljoin(config.base_url, data_next)
+                break
+
+        oldest = min((extract_url_date(u) for u in page_urls if extract_url_date(u)), default=None)
+        if oldest and oldest < cutoff:
+            break
+
+    return urls
 
 
 def _parse_args() -> argparse.Namespace:

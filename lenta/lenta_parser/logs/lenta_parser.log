@@ -13,3 +13,7 @@
 2026-02-16 23:36:45 INFO Iteration start
 2026-02-16 23:36:45 INFO Found 32 links
 2026-02-16 23:37:36 INFO Iteration finished: saved 32
+2026-02-16 23:44:54 INFO Iteration start
+2026-02-16 23:45:47 INFO Found 153 links
+2026-02-16 23:49:58 INFO Stop iteration: older than 2026-02-14T23:45:47.418070
+2026-02-16 23:49:58 INFO Iteration finished: saved 142

@@ -15,8 +15,9 @@ _NEWS_PATH_RE = re.compile(r"^/\d{8}/.+\.html$")
 _URL_DATE_RE = re.compile(r"/(\d{8})/")
 
 
-def fetch_section_html(config: Config) -> str:
-    return request_with_retries(config.section_url, config)
+def fetch_section_html(config: Config, url: str | None = None) -> str:
+    target = url or config.section_url
+    return request_with_retries(target, config)
 
 
 def _normalize_news_url(href: str | None, config: Config) -> str | None:
