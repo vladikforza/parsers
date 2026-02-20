@@ -3,28 +3,23 @@ from __future__ import annotations
 import argparse
 import time
 from datetime import datetime, timedelta
-from urllib.parse import urljoin
 
-from bs4 import BeautifulSoup
-
+from news_api import push_news, should_pause
 from .config import get_config
 from .ria_politics import extract_news_urls, extract_url_date, fetch_section_html, parse_news
-from .storage import append_header, load_header_index, normalize_header, write_event
 from .utils import rate_limit_sleep, setup_logger
 
 
-def run_once(config) -> list[dict]:
+def _run_iteration(config) -> bool:
     logger = setup_logger(config)
     logger.info("Iteration start")
 
-    header_index = load_header_index(config)
-
-    urls = _collect_section_urls(config, logger)
+    urls = _collect_section_urls(config)
     urls.sort(key=lambda item: extract_url_date(item) or datetime.min, reverse=True)
     logger.info("Found %s links", len(urls))
 
-    results = []
     cutoff = datetime.now() - timedelta(days=config.days_back)
+    saved_count = 0
 
     for url in urls:
         rate_limit_sleep(config)
@@ -32,22 +27,10 @@ def run_once(config) -> list[dict]:
             record = parse_news(url, config)
         except Exception as exc:  # noqa: BLE001
             logger.error("Failed to parse %s: %s", url, exc)
-            write_event(
-                "error",
-                {"source_name": config.source_name, "url": url},
-                config,
-                error_message=str(exc),
-            )
             continue
 
         if not record:
             logger.error("Missing required fields for %s", url)
-            write_event(
-                "error",
-                {"source_name": config.source_name, "url": url},
-                config,
-                error_message="missing required fields",
-            )
             continue
 
         record_date = datetime.fromisoformat(record["date"])
@@ -57,38 +40,21 @@ def run_once(config) -> list[dict]:
             logger.info("Stop iteration: older than %s", cutoff.isoformat())
             break
 
-        normalized_header = normalize_header(record["header"])
-        if not config.disable_dedup and normalized_header in header_index:
-            logger.info("Stop iteration: duplicate header")
-            write_event(
-                "duplicate",
-                {
-                    "header": record["header"],
-                    "text": record["text"],
-                    "date": record["date"],
-                    "hashtags": record["hashtags"],
-                    "source_name": record["source_name"],
-                    "url": url,
-                },
-                config,
-            )
-            break
-
         item = {
             "header": record["header"],
             "text": record["text"],
             "date": record["date"],
             "hashtags": record["hashtags"],
             "source_name": record["source_name"],
-            "url": url,
         }
-        results.append(item)
-        write_event("stored", item, config)
-        append_header(normalized_header, config)
-        header_index.add(normalized_header)
+        result = push_news(item, logger)
+        if should_pause(result):
+            logger.info("Pause requested by backend response")
+            return True
+        saved_count += 1
 
-    logger.info("Iteration finished: saved %s", len(results))
-    return results
+    logger.info("Iteration finished: saved %s", saved_count)
+    return False
 
 
 def run_forever(config) -> None:
@@ -96,59 +62,24 @@ def run_forever(config) -> None:
     logger.info("Run forever with interval %s minutes", config.interval_minutes)
     while True:
         try:
-            run_once(config)
+            pause_requested = _run_iteration(config)
         except Exception as exc:  # noqa: BLE001
             logger.error("Iteration failed: %s", exc)
-        time.sleep(config.interval_minutes * 60)
+            pause_requested = False
+
+        if pause_requested:
+            time.sleep(5 * 60)
+        else:
+            time.sleep(config.interval_minutes * 60)
 
 
-def _collect_section_urls(config, logger) -> list[str]:
-    urls: list[str] = []
-    seen = set()
-    cutoff = datetime.now() - timedelta(days=config.days_back)
-    next_url = (
-        f"{config.base_url}/services/archive/widget/more.html"
-        f"?id=0&date=0&articlemask={config.article_mask}&type=lenta"
-    )
-
-    for _ in range(config.max_pages):
-        if not next_url:
-            break
-        html = fetch_section_html(config, next_url)
-        soup = BeautifulSoup(html, "html.parser")
-        items = soup.select("div.lenta__item a[href]")
-        if not items:
-            break
-
-        page_urls = []
-        for node in items:
-            href = node.get("href")
-            if not href:
-                continue
-            url = urljoin(config.base_url, href)
-            page_urls.append(url)
-            if url in seen:
-                continue
-            seen.add(url)
-            urls.append(url)
-
-        next_url = None
-        for node in reversed(soup.select("div.lenta__item[data-next]")):
-            data_next = node.get("data-next")
-            if data_next:
-                next_url = urljoin(config.base_url, data_next)
-                break
-
-        oldest = min((extract_url_date(u) for u in page_urls if extract_url_date(u)), default=None)
-        if oldest and oldest < cutoff:
-            break
-
-    return urls
+def _collect_section_urls(config) -> list[str]:
+    html = fetch_section_html(config)
+    return extract_news_urls(html, config)
 
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="RIA politics news parser")
-    parser.add_argument("--forever", action="store_true", help="Run in endless loop")
     parser.add_argument(
         "--interval-minutes",
         type=int,
@@ -175,11 +106,7 @@ def main() -> None:
         "log_level": args.log_level,
     }
     config = get_config(overrides)
-
-    if args.forever:
-        run_forever(config)
-    else:
-        run_once(config)
+    run_forever(config)
 
 
 if __name__ == "__main__":

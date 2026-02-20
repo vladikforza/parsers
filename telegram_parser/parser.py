@@ -8,8 +8,8 @@ import time
 from telethon.errors import FloodWaitError, RPCError
 
 from . import config
-from . import storage
 from . import utils
+from news_api import push_news, should_pause
 
 logger = logging.getLogger(__name__)
 
@@ -43,29 +43,26 @@ def _get_messages_with_retries(client, entity, channel, offset_id):
 
 def _build_item(channel, message):
     text = message.raw_text or ""
+    header = text.splitlines()[0] if text else ""
     return {
-        "message_id": message.id,
+        "header": header,
         "text": text,
         "date": utils.to_utc_iso(message.date),
         "hashtags": utils.extract_hashtags(text),
         "source_name": channel,
-        "url": f"https://t.me/{channel}/{message.id}",
     }
 
 
-def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_dir, index_path):
-    records = []
+def fetch_new_posts_for_channel(client, channel, cutoff_dt):
+    saved_count = 0
+    pause_requested = False
     stop_reason = None
     try:
         entity = client.get_entity(channel)
     except Exception:
         logger.exception("failed to resolve channel entity: %s", channel)
-        error_item = {"source_name": channel}
-        output_path = storage.get_channel_output_path(output_dir, channel)
-        storage.write_event(output_path, "error", error_item, "failed to resolve channel entity")
-        return records, "error"
+        return saved_count, pause_requested, "error"
 
-    output_path = storage.get_channel_output_path(output_dir, channel)
     offset_id = 0
     while True:
         try:
@@ -77,14 +74,10 @@ def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_di
             continue
         except RPCError:
             logger.exception("RPC error while fetching %s", channel)
-            error_item = {"source_name": channel}
-            storage.write_event(output_path, "error", error_item, "RPC error while fetching messages")
-            return records, "error"
+            return saved_count, pause_requested, "error"
         except Exception:
             logger.exception("unexpected error while fetching %s", channel)
-            error_item = {"source_name": channel}
-            storage.write_event(output_path, "error", error_item, "unexpected error while fetching messages")
-            return records, "error"
+            return saved_count, pause_requested, "error"
 
         if not messages:
             break
@@ -95,18 +88,14 @@ def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_di
             if message.date < cutoff_dt:
                 stop_reason = "older_than_lookback"
                 break
-            unique_key = f"{channel}:{message.id}"
-            if unique_key in index_set:
-                item = _build_item(channel, message)
-                storage.write_event(output_path, "duplicate", item)
-                stop_reason = "duplicate"
-                break
 
             item = _build_item(channel, message)
-            storage.write_event(output_path, "stored", item)
-            storage.append_index_key(index_path, unique_key)
-            index_set.add(unique_key)
-            records.append(item)
+            result = push_news(item, logger)
+            if should_pause(result):
+                stop_reason = "backend_pause"
+                pause_requested = True
+                break
+            saved_count += 1
             _sleep_with_jitter()
 
         if stop_reason:
@@ -118,4 +107,4 @@ def fetch_new_posts_for_channel(client, channel, index_set, cutoff_dt, output_di
     if stop_reason is None:
         stop_reason = "done"
 
-    return records, stop_reason
+    return saved_count, pause_requested, stop_reason

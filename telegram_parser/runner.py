@@ -25,25 +25,19 @@ def _setup_logging():
     )
 
 
-def run_once():
-    _setup_logging()
+def _run_iteration() -> bool:
     logger = logging.getLogger(__name__)
 
     channels = storage.load_channels(config.CHANNELS_PATH)
     logger.info("loaded %s channels", len(channels))
 
-    index_set = storage.load_index(config.INDEX_PATH)
-    logger.info("loaded %s index entries", len(index_set))
-
     session_path = config.resolve_path(config.SESSION_PATH)
     session_path.parent.mkdir(parents=True, exist_ok=True)
 
-    output_dir = config.resolve_path(config.OUTPUT_DIR)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
     cutoff_dt = datetime.now(timezone.utc) - timedelta(days=config.LOOKBACK_DAYS)
 
-    results = []
+    total_saved = 0
+    pause_requested = False
     client = TelegramClient(str(session_path), config.API_ID, config.API_HASH)
     try:
         client.connect()
@@ -73,33 +67,37 @@ def run_once():
 
         for channel in channels:
             logger.info("processing channel %s", channel)
-            records, reason = tg_parser.fetch_new_posts_for_channel(
+            saved_count, channel_pause, reason = tg_parser.fetch_new_posts_for_channel(
                 client,
                 channel,
-                index_set,
                 cutoff_dt,
-                config.OUTPUT_DIR,
-                config.INDEX_PATH,
             )
             logger.info(
                 "channel %s: %s new posts, stop reason=%s",
                 channel,
-                len(records),
+                saved_count,
                 reason,
             )
-            results.extend(records)
+            total_saved += saved_count
+            if channel_pause:
+                pause_requested = True
+                break
             time.sleep(1)
     finally:
         client.disconnect()
 
-    logger.info("iteration complete, new posts: %s", len(results))
-    return results
+    logger.info("iteration complete, new posts: %s", total_saved)
+    return pause_requested
 
 
 def run_forever():
     _setup_logging()
     logger = logging.getLogger(__name__)
     while True:
-        run_once()
-        logger.info("sleeping for %s minutes", config.POLL_INTERVAL_MINUTES)
-        time.sleep(config.POLL_INTERVAL_MINUTES * 60)
+        pause_requested = _run_iteration()
+        if pause_requested:
+            logger.info("sleeping for 5 minutes due to backend response")
+            time.sleep(5 * 60)
+        else:
+            logger.info("sleeping for %s minutes", config.POLL_INTERVAL_MINUTES)
+            time.sleep(config.POLL_INTERVAL_MINUTES * 60)
