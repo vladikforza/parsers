@@ -101,3 +101,7 @@ def run_forever():
         else:
             logger.info("sleeping for %s minutes", config.POLL_INTERVAL_MINUTES)
             time.sleep(config.POLL_INTERVAL_MINUTES * 60)
+
+
+if __name__ == "__main__":
+    run_forever()
