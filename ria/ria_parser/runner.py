@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from news_api import push_news, should_pause
 from .config import get_config
 from .ria_politics import extract_news_urls, extract_url_date, fetch_section_html, parse_news
+from . import storage
 from .utils import rate_limit_sleep, setup_logger
 
 
@@ -48,6 +49,16 @@ def _run_iteration(config) -> bool:
             "source_name": record["source_name"],
         }
         result = push_news(item, logger)
+        storage.append_news(
+            {
+                "header": item["header"],
+                "text": item["text"],
+                "date": item["date"],
+                "hashtags": item["hashtags"],
+                "source_name": item["source_name"],
+            },
+            config,
+        )
         if should_pause(result):
             logger.info("Pause requested by backend response")
             return True

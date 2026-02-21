@@ -48,3 +48,185 @@
 2026-02-16 23:59:24 INFO Iteration start
 2026-02-16 23:59:29 INFO Found 200 links
 2026-02-17 00:05:21 INFO Iteration finished: saved 200
+2026-02-19 19:28:59 INFO Run forever with interval 5 minutes
+2026-02-19 19:28:59 INFO Iteration start
+2026-02-19 19:29:00 INFO Found 22 links
+2026-02-19 19:29:35 INFO Stop iteration: older than 2026-02-17T19:29:00.725019
+2026-02-19 19:29:35 INFO Iteration finished: saved 19
+2026-02-19 19:33:27 INFO Run forever with interval 5 minutes
+2026-02-19 19:33:27 INFO Iteration start
+2026-02-19 19:33:28 INFO Found 22 links
+2026-02-19 19:34:04 INFO Stop iteration: older than 2026-02-17T19:33:28.288251
+2026-02-19 19:34:04 INFO Iteration finished: saved 19
+2026-02-19 19:34:35 INFO Iteration start
+2026-02-19 19:34:36 INFO Found 22 links
+2026-02-19 19:35:14 INFO Stop iteration: older than 2026-02-17T19:34:36.550763
+2026-02-19 19:35:14 INFO Iteration finished: saved 19
+2026-02-19 19:39:04 INFO Iteration start
+2026-02-19 19:39:05 INFO Found 22 links
+2026-02-19 19:39:37 INFO Stop iteration: older than 2026-02-17T19:39:05.231869
+2026-02-19 19:39:37 INFO Iteration finished: saved 19
+2026-02-19 19:40:14 INFO Iteration start
+2026-02-19 19:40:15 INFO Found 22 links
+2026-02-19 19:40:47 INFO Stop iteration: older than 2026-02-17T19:40:15.669455
+2026-02-19 19:40:47 INFO Iteration finished: saved 19
+2026-02-19 19:45:47 INFO Iteration start
+2026-02-19 19:45:48 INFO Found 22 links
+2026-02-19 19:46:22 INFO Stop iteration: older than 2026-02-17T19:45:48.269573
+2026-02-19 19:46:22 INFO Iteration finished: saved 19
+2026-02-19 19:51:22 INFO Iteration start
+2026-02-19 19:51:22 INFO Found 22 links
+2026-02-19 19:51:55 INFO Stop iteration: older than 2026-02-17T19:51:22.999723
+2026-02-19 19:51:55 INFO Iteration finished: saved 19
+2026-02-19 19:56:55 INFO Iteration start
+2026-02-19 19:56:56 INFO Found 22 links
+2026-02-19 19:57:22 INFO Stop iteration: older than 2026-02-17T19:56:56.030963
+2026-02-19 19:57:22 INFO Iteration finished: saved 19
+2026-02-19 20:02:22 INFO Iteration start
+2026-02-19 20:02:22 INFO Found 22 links
+2026-02-19 20:02:49 INFO Stop iteration: older than 2026-02-17T20:02:22.756208
+2026-02-19 20:02:49 INFO Iteration finished: saved 19
+2026-02-19 20:07:49 INFO Iteration start
+2026-02-19 20:07:49 INFO Found 22 links
+2026-02-19 20:08:14 INFO Stop iteration: older than 2026-02-17T20:07:49.432997
+2026-02-19 20:08:14 INFO Iteration finished: saved 19
+2026-02-19 20:13:14 INFO Iteration start
+2026-02-19 20:13:14 INFO Found 22 links
+2026-02-19 20:13:42 INFO Stop iteration: older than 2026-02-17T20:13:14.638067
+2026-02-19 20:13:42 INFO Iteration finished: saved 19
+2026-02-19 20:18:42 INFO Iteration start
+2026-02-19 20:18:43 INFO Found 22 links
+2026-02-19 20:19:12 INFO Stop iteration: older than 2026-02-17T20:18:43.006846
+2026-02-19 20:19:12 INFO Iteration finished: saved 19
+2026-02-19 20:24:12 INFO Iteration start
+2026-02-19 20:24:12 INFO Found 22 links
+2026-02-19 20:24:38 INFO Stop iteration: older than 2026-02-17T20:24:12.621171
+2026-02-19 20:24:38 INFO Iteration finished: saved 19
+2026-02-19 20:29:38 INFO Iteration start
+2026-02-19 20:29:38 INFO Found 22 links
+2026-02-19 20:30:04 INFO Stop iteration: older than 2026-02-17T20:29:38.899494
+2026-02-19 20:30:04 INFO Iteration finished: saved 19
+2026-02-19 20:35:04 INFO Iteration start
+2026-02-19 20:35:04 INFO Found 22 links
+2026-02-19 20:35:32 INFO Stop iteration: older than 2026-02-17T20:35:04.997565
+2026-02-19 20:35:32 INFO Iteration finished: saved 19
+2026-02-19 20:40:32 INFO Iteration start
+2026-02-19 20:40:32 INFO Found 22 links
+2026-02-19 20:40:59 INFO Stop iteration: older than 2026-02-17T20:40:32.565968
+2026-02-19 20:40:59 INFO Iteration finished: saved 19
+2026-02-19 20:45:59 INFO Iteration start
+2026-02-19 20:45:59 INFO Found 22 links
+2026-02-19 20:46:29 INFO Stop iteration: older than 2026-02-17T20:45:59.762256
+2026-02-19 20:46:29 INFO Iteration finished: saved 19
+2026-02-19 20:51:29 INFO Iteration start
+2026-02-19 20:51:29 INFO Found 22 links
+2026-02-19 20:51:57 INFO Stop iteration: older than 2026-02-17T20:51:29.763519
+2026-02-19 20:51:57 INFO Iteration finished: saved 19
+2026-02-19 20:56:57 INFO Iteration start
+2026-02-19 20:56:57 INFO Found 22 links
+2026-02-19 20:57:24 INFO Stop iteration: older than 2026-02-17T20:56:57.557587
+2026-02-19 20:57:24 INFO Iteration finished: saved 19
+2026-02-19 21:02:24 INFO Iteration start
+2026-02-19 21:02:24 INFO Found 22 links
+2026-02-19 21:02:50 INFO Stop iteration: older than 2026-02-17T21:02:24.373951
+2026-02-19 21:02:50 INFO Iteration finished: saved 19
+2026-02-19 21:07:50 INFO Iteration start
+2026-02-19 21:07:51 INFO Found 22 links
+2026-02-19 21:08:18 INFO Stop iteration: older than 2026-02-17T21:07:51.024172
+2026-02-19 21:08:18 INFO Iteration finished: saved 19
+2026-02-19 21:13:18 INFO Iteration start
+2026-02-19 21:13:19 INFO Found 22 links
+2026-02-19 21:13:46 INFO Stop iteration: older than 2026-02-17T21:13:19.175019
+2026-02-19 21:13:46 INFO Iteration finished: saved 19
+2026-02-19 21:18:46 INFO Iteration start
+2026-02-19 21:18:47 INFO Found 22 links
+2026-02-19 21:19:16 INFO Stop iteration: older than 2026-02-17T21:18:47.047475
+2026-02-19 21:19:16 INFO Iteration finished: saved 19
+2026-02-19 21:24:16 INFO Iteration start
+2026-02-19 21:24:17 INFO Found 22 links
+2026-02-19 21:24:52 INFO Stop iteration: older than 2026-02-17T21:24:17.090085
+2026-02-19 21:24:52 INFO Iteration finished: saved 19
+2026-02-19 21:29:52 INFO Iteration start
+2026-02-19 21:29:52 INFO Found 22 links
+2026-02-19 21:30:28 INFO Stop iteration: older than 2026-02-17T21:29:52.718435
+2026-02-19 21:30:28 INFO Iteration finished: saved 19
+2026-02-19 21:35:28 INFO Iteration start
+2026-02-19 21:35:29 INFO Found 22 links
+2026-02-20 22:31:55 INFO Run forever with interval 1 minutes
+2026-02-20 22:31:55 INFO Iteration start
+2026-02-20 22:31:56 INFO Found 22 links
+2026-02-20 22:34:14 INFO Run forever with interval 1 minutes
+2026-02-20 22:34:14 INFO Iteration start
+2026-02-20 22:47:27 INFO Run forever with interval 1 minutes
+2026-02-20 22:47:27 INFO Iteration start
+2026-02-21 00:13:23 INFO Run forever with interval 1 minutes
+2026-02-21 00:13:23 INFO Iteration start
+2026-02-21 00:22:00 INFO Run forever with interval 1 minutes
+2026-02-21 00:22:00 INFO Iteration start
+2026-02-21 13:06:44 INFO Run forever with interval 5 minutes
+2026-02-21 13:06:44 INFO Iteration start
+2026-02-21 13:09:28 INFO Run forever with interval 5 minutes
+2026-02-21 13:09:28 INFO Iteration start
+2026-02-21 13:09:30 INFO Found 22 links
+2026-02-21 13:09:37 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-21 13:09:37 INFO Pause requested by backend response
+2026-02-21 13:13:50 INFO Run forever with interval 5 minutes
+2026-02-21 13:13:50 INFO Iteration start
+2026-02-21 13:13:51 INFO Found 22 links
+2026-02-21 13:13:58 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-21 13:13:58 INFO Pause requested by backend response
+2026-02-21 13:14:37 INFO Iteration start
+2026-02-21 13:14:38 INFO Found 22 links
+2026-02-21 13:14:44 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-21 13:14:44 INFO Pause requested by backend response
+2026-02-21 13:17:47 INFO Run forever with interval 5 minutes
+2026-02-21 13:17:47 INFO Iteration start
+2026-02-21 13:17:49 INFO Found 22 links
+2026-02-21 13:17:51 INFO Pause requested by backend response
+2026-02-21 13:18:58 INFO Iteration start
+2026-02-21 13:18:59 INFO Found 22 links
+2026-02-21 13:19:04 INFO Pause requested by backend response
+2026-02-21 13:19:44 INFO Iteration start
+2026-02-21 13:19:46 INFO Found 22 links
+2026-02-21 13:19:50 INFO Pause requested by backend response
+2026-02-21 13:22:51 INFO Iteration start
+2026-02-21 13:22:53 INFO Found 22 links
+2026-02-21 13:22:55 INFO Pause requested by backend response
+2026-02-21 13:24:04 INFO Iteration start
+2026-02-21 13:24:05 INFO Found 22 links
+2026-02-21 13:24:25 INFO Pause requested by backend response
+2026-02-21 13:24:50 INFO Iteration start
+2026-02-21 13:24:51 INFO Found 22 links
+2026-02-21 13:24:54 INFO Pause requested by backend response
+2026-02-21 13:25:34 INFO Run forever with interval 5 minutes
+2026-02-21 13:25:34 INFO Iteration start
+2026-02-21 13:25:35 INFO Found 22 links
+2026-02-21 13:25:41 INFO Pause requested by backend response
+2026-02-21 13:27:55 INFO Iteration start
+2026-02-21 13:27:57 INFO Found 22 links
+2026-02-21 13:28:50 ERROR Failed to parse https://ria.ru/20260220/naznachenie-2075857726.html: Failed to fetch https://ria.ru/20260220/naznachenie-2075857726.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:29:25 INFO Iteration start
+2026-02-21 13:29:43 ERROR Failed to parse https://ria.ru/20260220/kostyukov-2075829954.html: Failed to fetch https://ria.ru/20260220/kostyukov-2075829954.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:29:54 INFO Iteration start
+2026-02-21 13:30:18 ERROR Iteration failed: Failed to fetch https://ria.ru/politics/: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:30:37 ERROR Failed to parse https://ria.ru/20260220/putin-2075828534.html: Failed to fetch https://ria.ru/20260220/putin-2075828534.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:30:41 INFO Iteration start
+2026-02-21 13:30:46 ERROR Iteration failed: Failed to fetch https://ria.ru/politics/: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:31:30 ERROR Failed to parse https://ria.ru/20260220/grushko-2075798765.html: Failed to fetch https://ria.ru/20260220/grushko-2075798765.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:31:33 ERROR Iteration failed: Failed to fetch https://ria.ru/politics/: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:32:23 ERROR Failed to parse https://ria.ru/20260220/vybory-2075781214.html: Failed to fetch https://ria.ru/20260220/vybory-2075781214.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:33:16 ERROR Failed to parse https://ria.ru/20260220/putin-2075739557.html: Failed to fetch https://ria.ru/20260220/putin-2075739557.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:34:09 ERROR Failed to parse https://ria.ru/20260220/putin-2075738467.html: Failed to fetch https://ria.ru/20260220/putin-2075738467.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:35:02 ERROR Failed to parse https://ria.ru/20260220/peskov-2075736184.html: Failed to fetch https://ria.ru/20260220/peskov-2075736184.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:35:18 INFO Iteration start
+2026-02-21 13:35:46 INFO Iteration start
+2026-02-21 13:35:55 ERROR Failed to parse https://ria.ru/20260220/putin-2075681641.html: Failed to fetch https://ria.ru/20260220/putin-2075681641.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:36:10 ERROR Iteration failed: Failed to fetch https://ria.ru/politics/: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:36:33 INFO Iteration start
+2026-02-21 13:36:38 ERROR Iteration failed: Failed to fetch https://ria.ru/politics/: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:36:49 ERROR Failed to parse https://ria.ru/20260220/putin-2075678570.html: Failed to fetch https://ria.ru/20260220/putin-2075678570.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:37:25 ERROR Iteration failed: Failed to fetch https://ria.ru/politics/: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:37:43 ERROR Failed to parse https://ria.ru/20260220/matvienko-2075676487.html: Failed to fetch https://ria.ru/20260220/matvienko-2075676487.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:38:36 ERROR Failed to parse https://ria.ru/20260219/putin-2075615809.html: Failed to fetch https://ria.ru/20260219/putin-2075615809.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:39:28 ERROR Failed to parse https://ria.ru/20260219/er-2075597563.html: Failed to fetch https://ria.ru/20260219/er-2075597563.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-21 13:40:21 ERROR Failed to parse https://ria.ru/20260219/rossiya-2075583563.html: Failed to fetch https://ria.ru/20260219/rossiya-2075583563.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)

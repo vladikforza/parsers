@@ -88,7 +88,7 @@ def get_config(overrides: dict | None = None) -> Config:
     )
     source_name = _env_str("LENTA_SOURCE_NAME", "lenta_world_politic")
 
-    interval_minutes = _env_int("LENTA_INTERVAL_MINUTES", 10)
+    interval_minutes = _env_int("LENTA_INTERVAL_MINUTES", 5)
     days_back = _env_int("LENTA_DAYS_BACK", 2)
     max_pages = _env_int("LENTA_MAX_PAGES", 10)
 

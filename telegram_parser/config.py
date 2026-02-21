@@ -43,6 +43,7 @@ SESSION_PATH = _get_env("SESSION_PATH", "data/telegram.session")
 
 CHANNELS_PATH = _get_env("CHANNELS_PATH", "data/channels.txt")
 OUTPUT_DIR = _get_env("OUTPUT_DIR", "data/telegram_posts")
+OUTPUT_PATH = _get_env("OUTPUT_PATH", "data/telegram_posts.jsonl")
 INDEX_PATH = _get_env("INDEX_PATH", "data/telegram_index.txt")
 LOG_PATH = _get_env("LOG_PATH", None)
 TELEGRAM_PHONE = _get_env("TELEGRAM_PHONE", None)

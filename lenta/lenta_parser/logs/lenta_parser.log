@@ -17,3 +17,124 @@
 2026-02-16 23:45:47 INFO Found 153 links
 2026-02-16 23:49:58 INFO Stop iteration: older than 2026-02-14T23:45:47.418070
 2026-02-16 23:49:58 INFO Iteration finished: saved 142
+2026-02-20 22:31:55 INFO Run forever with interval 1 minutes
+2026-02-20 22:31:55 INFO Iteration start
+2026-02-20 22:31:56 INFO Found 37 links
+2026-02-20 22:34:14 INFO Run forever with interval 1 minutes
+2026-02-20 22:34:14 INFO Iteration start
+2026-02-20 22:47:27 INFO Run forever with interval 1 minutes
+2026-02-20 22:47:27 INFO Iteration start
+2026-02-21 00:13:23 INFO Run forever with interval 1 minutes
+2026-02-21 00:13:23 INFO Iteration start
+2026-02-21 00:22:00 INFO Run forever with interval 1 minutes
+2026-02-21 00:22:00 INFO Iteration start
+2026-02-21 00:27:46 INFO Run forever with interval 1 minutes
+2026-02-21 00:27:46 INFO Iteration start
+2026-02-21 00:27:47 INFO Found 32 links
+2026-02-21 00:28:36 INFO Run forever with interval 1 minutes
+2026-02-21 00:28:36 INFO Iteration start
+2026-02-21 00:28:47 INFO Found 32 links
+2026-02-21 00:28:49 INFO Pause requested by backend response
+2026-02-21 00:33:49 INFO Iteration start
+2026-02-21 00:33:51 INFO Found 33 links
+2026-02-21 00:33:56 INFO Pause requested by backend response
+2026-02-21 00:34:06 INFO Run forever with interval 1 minutes
+2026-02-21 00:34:06 INFO Iteration start
+2026-02-21 00:34:07 INFO Found 33 links
+2026-02-21 00:34:28 INFO Pause requested by backend response
+2026-02-21 00:37:42 INFO Run forever with interval 1 minutes
+2026-02-21 00:37:42 INFO Iteration start
+2026-02-21 00:37:46 INFO Found 33 links
+2026-02-21 00:38:06 INFO Pause requested by backend response
+2026-02-21 00:38:56 INFO Iteration start
+2026-02-21 00:38:58 INFO Found 33 links
+2026-02-21 00:39:02 INFO Pause requested by backend response
+2026-02-21 00:42:04 INFO Run forever with interval 1 minutes
+2026-02-21 00:42:04 INFO Iteration start
+2026-02-21 00:42:06 INFO Found 32 links
+2026-02-21 00:42:08 INFO Backend response: {'news_id': 32, 'cluster_id': 39, 'created': False}
+2026-02-21 00:42:08 INFO Pause requested by backend response
+2026-02-21 00:44:02 INFO Iteration start
+2026-02-21 00:44:04 INFO Found 32 links
+2026-02-21 00:44:07 INFO Pause requested by backend response
+2026-02-21 00:49:07 INFO Iteration start
+2026-02-21 00:49:09 INFO Found 33 links
+2026-02-21 00:49:28 INFO Pause requested by backend response
+2026-02-21 00:54:28 INFO Iteration start
+2026-02-21 00:54:30 INFO Found 33 links
+2026-02-21 00:54:41 INFO Pause requested by backend response
+2026-02-21 00:59:41 INFO Iteration start
+2026-02-21 00:59:43 INFO Found 33 links
+2026-02-21 01:00:03 INFO Pause requested by backend response
+2026-02-21 13:06:44 INFO Run forever with interval 5 minutes
+2026-02-21 13:06:44 INFO Iteration start
+2026-02-21 13:09:28 INFO Run forever with interval 5 minutes
+2026-02-21 13:09:28 INFO Iteration start
+2026-02-21 13:09:30 INFO Found 36 links
+2026-02-21 13:09:37 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-21 13:09:37 INFO Pause requested by backend response
+2026-02-21 13:13:50 INFO Run forever with interval 5 minutes
+2026-02-21 13:13:50 INFO Iteration start
+2026-02-21 13:13:52 INFO Found 36 links
+2026-02-21 13:13:58 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-21 13:13:58 INFO Pause requested by backend response
+2026-02-21 13:14:37 INFO Iteration start
+2026-02-21 13:14:39 INFO Found 36 links
+2026-02-21 13:14:45 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-21 13:14:45 INFO Pause requested by backend response
+2026-02-21 13:17:47 INFO Run forever with interval 5 minutes
+2026-02-21 13:17:47 INFO Iteration start
+2026-02-21 13:17:49 INFO Found 36 links
+2026-02-21 13:17:51 INFO Pause requested by backend response
+2026-02-21 13:18:58 INFO Iteration start
+2026-02-21 13:19:12 INFO Found 34 links
+2026-02-21 13:19:17 INFO Pause requested by backend response
+2026-02-21 13:19:45 INFO Iteration start
+2026-02-21 13:19:52 INFO Found 34 links
+2026-02-21 13:19:56 INFO Pause requested by backend response
+2026-02-21 13:22:51 INFO Iteration start
+2026-02-21 13:23:08 INFO Found 34 links
+2026-02-21 13:23:18 INFO Pause requested by backend response
+2026-02-21 13:24:17 INFO Iteration start
+2026-02-21 13:24:19 INFO Found 34 links
+2026-02-21 13:24:41 INFO Pause requested by backend response
+2026-02-21 13:24:56 INFO Iteration start
+2026-02-21 13:24:58 INFO Found 34 links
+2026-02-21 13:25:05 INFO Pause requested by backend response
+2026-02-21 13:25:34 INFO Run forever with interval 5 minutes
+2026-02-21 13:25:34 INFO Iteration start
+2026-02-21 13:25:36 INFO Found 34 links
+2026-02-21 13:25:43 INFO Pause requested by backend response
+2026-02-21 13:28:18 INFO Iteration start
+2026-02-21 13:28:21 INFO Found 34 links
+2026-02-21 13:29:01 INFO Pause requested by backend response
+2026-02-21 13:29:41 INFO Iteration start
+2026-02-21 13:29:46 INFO Found 34 links
+2026-02-21 13:29:48 INFO Pause requested by backend response
+2026-02-21 13:30:05 INFO Iteration start
+2026-02-21 13:30:07 INFO Found 34 links
+2026-02-21 13:30:10 INFO Pause requested by backend response
+2026-02-21 13:30:43 INFO Iteration start
+2026-02-21 13:30:46 INFO Found 34 links
+2026-02-21 13:30:48 INFO Pause requested by backend response
+2026-02-21 13:34:01 INFO Iteration start
+2026-02-21 13:34:06 INFO Found 34 links
+2026-02-21 13:34:14 INFO Pause requested by backend response
+2026-02-21 13:34:48 INFO Iteration start
+2026-02-21 13:34:51 INFO Found 34 links
+2026-02-21 13:34:53 INFO Pause requested by backend response
+2026-02-21 13:35:10 INFO Iteration start
+2026-02-21 13:35:11 INFO Found 34 links
+2026-02-21 13:35:39 INFO Pause requested by backend response
+2026-02-21 13:35:48 INFO Iteration start
+2026-02-21 13:35:50 INFO Found 34 links
+2026-02-21 13:35:55 INFO Pause requested by backend response
+2026-02-21 13:39:14 INFO Iteration start
+2026-02-21 13:39:17 INFO Found 34 links
+2026-02-21 13:39:19 INFO Pause requested by backend response
+2026-02-21 13:39:53 INFO Iteration start
+2026-02-21 13:39:55 INFO Found 34 links
+2026-02-21 13:40:00 INFO Pause requested by backend response
+2026-02-21 13:40:39 INFO Iteration start
+2026-02-21 13:40:40 INFO Found 34 links
+2026-02-21 13:40:43 INFO Pause requested by backend response

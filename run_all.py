@@ -3,11 +3,16 @@ from __future__ import annotations
 import subprocess
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
 
 
 def _start_process(cmd: list[str], cwd: Path) -> subprocess.Popen:
     return subprocess.Popen(cmd, cwd=str(cwd))
+
+
+def _timestamp() -> str:
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
 def main() -> int:
@@ -22,13 +27,15 @@ def main() -> int:
 
     try:
         while True:
-            for proc in processes:
+            for index, proc in enumerate(processes):
                 code = proc.poll()
-                if code is not None:
-                    for other in processes:
-                        if other.poll() is None:
-                            other.terminate()
-                    return code
+                if code is None:
+                    continue
+                cmd = commands[index]
+                print(f"{_timestamp()} process exited ({code}): {' '.join(cmd)}")
+                time.sleep(1)
+                processes[index] = _start_process(cmd, root)
+                print(f"{_timestamp()} process restarted: {' '.join(cmd)}")
             time.sleep(1)
     except KeyboardInterrupt:
         for proc in processes:

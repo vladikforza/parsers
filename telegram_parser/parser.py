@@ -8,6 +8,7 @@ import time
 from telethon.errors import FloodWaitError, RPCError
 
 from . import config
+from . import storage
 from . import utils
 from news_api import push_news, should_pause
 
@@ -54,6 +55,7 @@ def _build_item(channel, message):
 
 
 def fetch_new_posts_for_channel(client, channel, cutoff_dt):
+    output_path = config.resolve_path(config.OUTPUT_PATH)
     saved_count = 0
     pause_requested = False
     stop_reason = None
@@ -91,6 +93,16 @@ def fetch_new_posts_for_channel(client, channel, cutoff_dt):
 
             item = _build_item(channel, message)
             result = push_news(item, logger)
+            storage.append_jsonl(
+                output_path,
+                {
+                    "header": item["header"],
+                    "text": item["text"],
+                    "date": item["date"],
+                    "hashtags": item["hashtags"],
+                    "source_name": item["source_name"],
+                },
+            )
             if should_pause(result):
                 stop_reason = "backend_pause"
                 pause_requested = True

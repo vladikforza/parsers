@@ -87,7 +87,7 @@ def get_config(overrides: dict | None = None) -> Config:
     section_url = _env_str("RIA_SECTION_URL", "https://ria.ru/politics/")
     source_name = _env_str("RIA_SOURCE_NAME", "ria_politics")
 
-    interval_minutes = _env_int("RIA_INTERVAL_MINUTES", 10)
+    interval_minutes = _env_int("RIA_INTERVAL_MINUTES", 5)
     days_back = _env_int("RIA_DAYS_BACK", 2)
     max_pages = _env_int("RIA_MAX_PAGES", 10)
     article_mask = _env_str("RIA_ARTICLE_MASK", "politics")
