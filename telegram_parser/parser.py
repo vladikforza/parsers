@@ -45,12 +45,13 @@ def _get_messages_with_retries(client, entity, channel, offset_id):
 def _build_item(channel, message):
     text = message.raw_text or ""
     header = text.splitlines()[0] if text else ""
+    channel_name = channel.lstrip("@")
     return {
         "header": header,
         "text": text,
         "date": utils.to_utc_iso(message.date),
         "hashtags": utils.extract_hashtags(text),
-        "source_name": channel,
+        "source_name": f"https://t.me/{channel_name}",
     }
 
 
