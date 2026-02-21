@@ -391,3 +391,12 @@
 2026-02-21 15:30:47 INFO Found 35 links
 2026-02-21 15:30:49 INFO Pause requested by backend response
 2026-02-21 15:30:51 INFO Pause requested by backend response
+2026-02-21 15:33:23 INFO Iteration start
+2026-02-21 15:35:19 INFO Iteration start
+2026-02-21 15:35:49 INFO Iteration start
+2026-02-21 15:35:49 ERROR Iteration failed: Failed to fetch https://lenta.ru/rubrics/world/politic/: HTTPSConnectionPool(host='lenta.ru', port=443): Max retries exceeded with url: /rubrics/world/politic/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000002C493AAED50>, 'Connection to lenta.ru timed out. (connect timeout=15)'))
+2026-02-21 15:35:51 INFO Iteration start
+2026-02-21 15:35:52 INFO Found 35 links
+2026-02-21 15:35:53 INFO Found 35 links
+2026-02-21 15:35:54 INFO Pause requested by backend response
+2026-02-21 15:35:58 INFO Pause requested by backend response
