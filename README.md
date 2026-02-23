@@ -1,103 +1,62 @@
-Установка
+# Парсеры новостей (Lenta, RIA, Telegram)
+
+## 1) Цели и задачи, решаемые проектом
+- Собирать свежие новости из Lenta, RIA и Telegram.
+- Приводить данные к единому формату.
+- Передавать новости в backend API для дальнейшей обработки/хранения.
+
+## 2) Основные функции и возможности программы
+- Парсинг новостей из заданных разделов Lenta и RIA.
+- Сбор постов из заданных Telegram-каналов.
+- Логирование хода работы и сохранение результатов локально.
+- Отправка каждой новости в backend API.
+
+## 3) Зависимости
+- Python 3.10+.
+- Пакеты из `requirements.txt`:
+  - `beautifulsoup4==4.12.3`
+  - `requests==2.32.3`
+  - `telethon==1.36.0`
+- Доступный backend API (по умолчанию `http://localhost:8080/test/save_news`).
+
+## 4) Настройка программы
+1. Создать виртуальное окружение и установить зависимости:
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
+2. Настройть параметры через переменные окружения (ключевые):
+- Общие: `NEWS_API_URL`, `NEWS_API_TIMEOUT`.
+- Lenta: `LENTA_SECTION_URL`, `LENTA_DAYS_BACK`, `LENTA_INTERVAL_MINUTES` и другие.
+- RIA: `RIA_SECTION_URL`, `RIA_DAYS_BACK`, `RIA_INTERVAL_MINUTES` и другие.
+- Telegram: `API_ID`, `API_HASH`, `CHANNELS_PATH`, `POLL_INTERVAL_MINUTES` и другие.
 
-Общий запуск (все парсеры сразу)
+Полные списки параметров лежат в файлах:
+- `lenta/lenta_parser/config.py`
+- `ria/ria_parser/config.py`
+- `telegram_parser/config.py`
+
+## 5) Запуск программы
+- Запуск всех парсеров:
 ```bash
 python run_all.py
 ```
-`run_all.py` запускает Lenta, RIA и Telegram и перезапускает их при падении. Парсеры работают в режиме `run_forever` (пауза между итерациями).
-
-Запуск отдельных парсеров
+- Запуск по отдельности:
 ```bash
 python -m lenta.lenta_parser.runner
 python -m ria.ria_parser.runner
 python -m telegram_parser.runner
 ```
 
-Выходные файлы и формат
-- Lenta: `lenta/lenta_parser/data/lenta_world_politic.jsonl`
-- RIA: `ria/ria_parser/data/ria_politics.jsonl`
-- Telegram: `telegram_parser/data/telegram_posts.jsonl`
-
-Каждая строка JSONL содержит только поля:
+## 6) Пример работы
+Пример сохраненной новости в JSONL формате:
 ```json
 {
-  "header": "...",
-  "text": "...",
-  "date": "...",
-  "hashtags": ["..."],
-  "source_name": "..."
+  "header": "Пример заголовка",
+  "text": "Текст новости...",
+  "date": "2024-01-01T12:00:00",
+  "hashtags": ["политика", "мир"],
+  "source_name": "lenta"
 }
 ```
-
-Backend API (отправка новостей)
-По умолчанию запросы идут на `http://localhost:8080/test/save_news`.
-Переменные окружения:
-- `NEWS_API_URL` — URL backend API
-- `NEWS_API_TIMEOUT` — таймаут запроса (секунды)
-
-Переменные окружения Lenta
-- `LENTA_DATA_DIR` — папка данных (по умолчанию `lenta/lenta_parser/data`)
-- `LENTA_LOG_DIR` — папка логов
-- `LENTA_BASE_URL`
-- `LENTA_SECTION_URL`
-- `LENTA_SOURCE_NAME`
-- `LENTA_INTERVAL_MINUTES`
-- `LENTA_DAYS_BACK`
-- `LENTA_MAX_PAGES`
-- `LENTA_TIMEOUT_SECONDS`
-- `LENTA_RETRY_COUNT`
-- `LENTA_BACKOFF_SECONDS`
-- `LENTA_RATE_DELAY_MIN`
-- `LENTA_RATE_DELAY_MAX`
-- `LENTA_USER_AGENT`
-- `LENTA_ACCEPT_LANGUAGE`
-- `LENTA_REFERER`
-- `LENTA_LOG_LEVEL`
-- `LENTA_DISABLE_DEDUP`
-
-Переменные окружения RIA
-- `RIA_DATA_DIR` — папка данных (по умолчанию `ria/ria_parser/data`)
-- `RIA_LOG_DIR` — папка логов
-- `RIA_BASE_URL`
-- `RIA_SECTION_URL`
-- `RIA_SOURCE_NAME`
-- `RIA_INTERVAL_MINUTES`
-- `RIA_DAYS_BACK`
-- `RIA_MAX_PAGES`
-- `RIA_ARTICLE_MASK`
-- `RIA_TIMEOUT_SECONDS`
-- `RIA_RETRY_COUNT`
-- `RIA_BACKOFF_SECONDS`
-- `RIA_RATE_DELAY_MIN`
-- `RIA_RATE_DELAY_MAX`
-- `RIA_USER_AGENT`
-- `RIA_ACCEPT_LANGUAGE`
-- `RIA_REFERER`
-- `RIA_LOG_LEVEL`
-- `RIA_DISABLE_DEDUP`
-
-Переменные окружения Telegram
-- `API_ID` — ID приложения Telegram
-- `API_HASH` — hash приложения Telegram
-- `SESSION_PATH` — путь к файлу сессии
-- `CHANNELS_PATH` — путь к списку каналов (`telegram_parser/data/channels.txt`)
-- `OUTPUT_PATH` — общий файл вывода (`telegram_parser/data/telegram_posts.jsonl`)
-- `OUTPUT_DIR` — директория для постов (если используется отдельно)
-- `INDEX_PATH` — файл индекса
-- `LOG_PATH` — лог-файл
-- `TELEGRAM_PHONE` — номер телефона для входа
-- `TELEGRAM_CODE` — код подтверждения
-- `TELEGRAM_PASSWORD` — пароль 2FA (если включен)
-- `TELEGRAM_BOT_TOKEN` — токен бота (альтернатива логину по телефону)
-- `POLL_INTERVAL_MINUTES` — интервал между итерациями
-- `LOOKBACK_DAYS` — глубина по дате
-- `REQUEST_DELAY_RANGE` — задержка между запросами (например `0.3,1.0`)
-
-Авторизация Telegram
-- Если используется телефон: задать `TELEGRAM_PHONE`, запустить парсер, получитье код и установить `TELEGRAM_CODE` (и `TELEGRAM_PASSWORD`, если включена 2FA).
-- Если используется бот: задать `TELEGRAM_BOT_TOKEN`.
