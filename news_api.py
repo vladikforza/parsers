@@ -56,5 +56,5 @@ def push_news(item: dict, logger: logging.Logger | None = None) -> dict[str, Any
 
 def should_pause(result: dict[str, Any] | None) -> bool:
     if result is None:
-        return True
+        return False
     return not bool(result.get("created", False))

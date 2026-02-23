@@ -93,6 +93,8 @@ def fetch_new_posts_for_channel(client, channel, cutoff_dt):
                 break
 
             item = _build_item(channel, message)
+            if not item.get("header") or not item.get("text"):
+                continue
             result = push_news(item, logger)
             storage.append_jsonl(
                 output_path,

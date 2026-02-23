@@ -33,6 +33,9 @@ def _run_iteration(config) -> bool:
         if not record:
             logger.error("Missing required fields for %s", url)
             continue
+        if not record.get("header") or not record.get("text"):
+            logger.error("Missing required fields for %s", url)
+            continue
 
         record_date = datetime.fromisoformat(record["date"])
         if record_date.tzinfo is not None:

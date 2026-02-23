@@ -33,6 +33,9 @@ def _run_iteration(config) -> bool:
         if not record:
             logger.error("Missing required fields for %s", url)
             continue
+        if not record.get("header") or not record.get("text"):
+            logger.error("Missing required fields for %s", url)
+            continue
 
         record_date = datetime.fromisoformat(record["date"])
         if record_date.tzinfo is not None:
@@ -60,8 +63,7 @@ def _run_iteration(config) -> bool:
             config,
         )
         if should_pause(result):
-            logger.info("Pause requested by backend response")
-            return True
+            logger.info("Pause requested by backend response (ignored)")
         saved_count += 1
 
     logger.info("Iteration finished: saved %s", saved_count)
