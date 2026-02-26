@@ -49,6 +49,7 @@ def _run_iteration(config) -> bool:
             "text": record["text"],
             "date": record["date"],
             "hashtags": record["hashtags"],
+            "image_urls": record.get("image_urls", []),
             "source_name": record["source_name"],
         }
         result = push_news(item, logger)
@@ -58,6 +59,7 @@ def _run_iteration(config) -> bool:
                 "text": item["text"],
                 "date": item["date"],
                 "hashtags": item["hashtags"],
+                "image_urls": item["image_urls"],
                 "source_name": item["source_name"],
             },
             config,

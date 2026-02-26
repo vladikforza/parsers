@@ -150,6 +150,26 @@ def _extract_tags(soup: BeautifulSoup) -> list[str]:
     return []
 
 
+def _extract_image_url(soup: BeautifulSoup) -> str | None:
+    meta = soup.find("meta", attrs={"property": "og:image"})
+    if meta and meta.get("content"):
+        return meta.get("content")
+
+    meta = soup.find("meta", attrs={"name": "twitter:image"})
+    if meta and meta.get("content"):
+        return meta.get("content")
+
+    image = soup.select_one("picture img")
+    if image and image.get("src"):
+        return image.get("src")
+
+    image = soup.find("img")
+    if image and image.get("src"):
+        return image.get("src")
+
+    return None
+
+
 def parse_news(url: str, config: Config) -> dict | None:
     html = request_with_retries(url, config)
     soup = BeautifulSoup(html, "html.parser")
@@ -165,11 +185,13 @@ def parse_news(url: str, config: Config) -> dict | None:
 
     text = _extract_text(soup)
     tags = _extract_tags(soup)
+    image_url = _extract_image_url(soup)
 
     return {
         "header": header,
         "text": text,
         "date": parsed_date.isoformat(),
         "hashtags": tags,
+        "image_urls": [image_url] if image_url else [],
         "source_name": config.source_name,
     }
