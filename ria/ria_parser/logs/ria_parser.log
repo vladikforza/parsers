@@ -230,3 +230,27 @@
 2026-02-21 13:38:36 ERROR Failed to parse https://ria.ru/20260219/putin-2075615809.html: Failed to fetch https://ria.ru/20260219/putin-2075615809.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
 2026-02-21 13:39:28 ERROR Failed to parse https://ria.ru/20260219/er-2075597563.html: Failed to fetch https://ria.ru/20260219/er-2075597563.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
 2026-02-21 13:40:21 ERROR Failed to parse https://ria.ru/20260219/rossiya-2075583563.html: Failed to fetch https://ria.ru/20260219/rossiya-2075583563.html: HTTPSConnectionPool(host='ria.ru', port=443): Read timed out. (read timeout=15)
+2026-02-26 11:57:07 INFO Iteration start
+2026-02-26 11:57:08 INFO Found 23 links
+2026-02-26 11:57:15 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:57:22 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:57:28 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:57:35 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:57:57 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:03 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:10 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:18 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:24 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:31 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:37 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:44 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:51 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:58:57 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:04 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:10 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:17 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:23 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:30 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:36 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:59:39 INFO Stop iteration: older than 2026-02-24T11:57:08.995843
+2026-02-26 11:59:39 INFO Iteration finished: saved 20

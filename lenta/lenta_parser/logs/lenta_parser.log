@@ -402,3 +402,279 @@
 2026-02-21 15:35:58 INFO Pause requested by backend response
 2026-02-21 15:36:21 INFO Found 35 links
 2026-02-21 15:36:26 INFO Pause requested by backend response
+2026-02-22 12:46:30 INFO Run forever with interval 5 minutes
+2026-02-22 12:46:30 INFO Iteration start
+2026-02-22 12:46:32 INFO Found 36 links
+2026-02-22 12:46:45 ERROR Failed to push news: timed out
+2026-02-22 12:46:45 INFO Pause requested by backend response
+2026-02-22 12:50:56 INFO Run forever with interval 5 minutes
+2026-02-22 12:50:57 INFO Iteration start
+2026-02-22 12:50:59 INFO Found 36 links
+2026-02-22 12:51:12 ERROR Failed to push news: timed out
+2026-02-22 12:51:12 INFO Pause requested by backend response (ignored)
+2026-02-22 12:51:25 ERROR Failed to push news: timed out
+2026-02-22 12:51:25 INFO Pause requested by backend response (ignored)
+2026-02-22 12:51:37 ERROR Failed to push news: timed out
+2026-02-22 12:51:37 INFO Pause requested by backend response (ignored)
+2026-02-22 12:51:45 INFO Iteration start
+2026-02-22 12:51:50 ERROR Failed to push news: timed out
+2026-02-22 12:51:50 INFO Pause requested by backend response (ignored)
+2026-02-22 12:52:03 ERROR Failed to push news: timed out
+2026-02-22 12:52:03 INFO Pause requested by backend response (ignored)
+2026-02-22 12:52:05 INFO Found 36 links
+2026-02-22 12:52:16 ERROR Failed to push news: timed out
+2026-02-22 12:52:16 INFO Pause requested by backend response (ignored)
+2026-02-22 12:52:18 ERROR Failed to push news: timed out
+2026-02-22 12:52:18 INFO Pause requested by backend response
+2026-02-22 12:52:28 ERROR Failed to push news: timed out
+2026-02-22 12:52:28 INFO Pause requested by backend response (ignored)
+2026-02-22 12:52:41 ERROR Failed to push news: timed out
+2026-02-22 12:52:41 INFO Pause requested by backend response (ignored)
+2026-02-22 12:52:54 ERROR Failed to push news: timed out
+2026-02-22 12:52:54 INFO Pause requested by backend response (ignored)
+2026-02-22 12:53:07 ERROR Failed to push news: timed out
+2026-02-22 12:53:07 INFO Pause requested by backend response (ignored)
+2026-02-22 12:53:20 ERROR Failed to push news: timed out
+2026-02-22 12:53:20 INFO Pause requested by backend response (ignored)
+2026-02-22 12:53:32 ERROR Failed to push news: timed out
+2026-02-22 12:53:32 INFO Pause requested by backend response (ignored)
+2026-02-22 12:53:45 ERROR Failed to push news: timed out
+2026-02-22 12:53:45 INFO Pause requested by backend response (ignored)
+2026-02-22 12:53:58 ERROR Failed to push news: timed out
+2026-02-22 12:53:58 INFO Pause requested by backend response (ignored)
+2026-02-22 12:54:10 ERROR Failed to push news: timed out
+2026-02-22 12:54:10 INFO Pause requested by backend response (ignored)
+2026-02-22 12:54:23 ERROR Failed to push news: timed out
+2026-02-22 12:54:23 INFO Pause requested by backend response (ignored)
+2026-02-22 12:54:36 ERROR Failed to push news: timed out
+2026-02-22 12:54:36 INFO Pause requested by backend response (ignored)
+2026-02-22 12:54:49 ERROR Failed to push news: timed out
+2026-02-22 12:54:49 INFO Pause requested by backend response (ignored)
+2026-02-22 12:55:01 ERROR Failed to push news: timed out
+2026-02-22 12:55:01 INFO Pause requested by backend response (ignored)
+2026-02-22 12:55:14 ERROR Failed to push news: timed out
+2026-02-22 12:55:14 INFO Pause requested by backend response (ignored)
+2026-02-22 12:55:26 ERROR Failed to push news: timed out
+2026-02-22 12:55:26 INFO Pause requested by backend response (ignored)
+2026-02-22 12:55:39 ERROR Failed to push news: timed out
+2026-02-22 12:55:39 INFO Pause requested by backend response (ignored)
+2026-02-22 12:55:52 ERROR Failed to push news: timed out
+2026-02-22 12:55:52 INFO Pause requested by backend response (ignored)
+2026-02-22 12:56:04 ERROR Failed to push news: timed out
+2026-02-22 12:56:04 INFO Pause requested by backend response (ignored)
+2026-02-22 12:56:21 ERROR Failed to push news: timed out
+2026-02-22 12:56:21 INFO Pause requested by backend response (ignored)
+2026-02-22 12:56:33 ERROR Failed to push news: timed out
+2026-02-22 12:56:33 INFO Pause requested by backend response (ignored)
+2026-02-22 12:56:46 ERROR Failed to push news: timed out
+2026-02-22 12:56:46 INFO Pause requested by backend response (ignored)
+2026-02-22 12:56:58 ERROR Failed to push news: timed out
+2026-02-22 12:56:58 INFO Pause requested by backend response (ignored)
+2026-02-22 12:57:12 ERROR Failed to push news: timed out
+2026-02-22 12:57:12 INFO Pause requested by backend response (ignored)
+2026-02-22 12:57:18 INFO Iteration start
+2026-02-22 12:57:24 ERROR Failed to push news: timed out
+2026-02-22 12:57:24 INFO Pause requested by backend response (ignored)
+2026-02-22 12:57:33 INFO Found 37 links
+2026-02-22 12:57:37 ERROR Failed to push news: timed out
+2026-02-22 12:57:37 INFO Pause requested by backend response (ignored)
+2026-02-22 12:57:46 ERROR Failed to push news: timed out
+2026-02-22 12:57:46 INFO Pause requested by backend response
+2026-02-22 12:57:49 ERROR Failed to push news: timed out
+2026-02-22 12:57:49 INFO Pause requested by backend response (ignored)
+2026-02-22 12:58:02 ERROR Failed to push news: timed out
+2026-02-22 12:58:02 INFO Pause requested by backend response (ignored)
+2026-02-22 12:58:14 ERROR Failed to push news: timed out
+2026-02-22 12:58:14 INFO Pause requested by backend response (ignored)
+2026-02-22 12:58:27 ERROR Failed to push news: timed out
+2026-02-22 12:58:27 INFO Pause requested by backend response (ignored)
+2026-02-22 12:58:40 ERROR Failed to push news: timed out
+2026-02-22 12:58:40 INFO Pause requested by backend response (ignored)
+2026-02-22 12:58:40 INFO Iteration finished: saved 36
+2026-02-22 13:02:46 INFO Iteration start
+2026-02-22 13:02:48 INFO Found 37 links
+2026-02-22 13:03:01 ERROR Failed to push news: timed out
+2026-02-22 13:03:01 INFO Pause requested by backend response
+2026-02-22 13:03:40 INFO Iteration start
+2026-02-22 13:03:41 INFO Found 37 links
+2026-02-22 13:03:55 ERROR Failed to push news: timed out
+2026-02-22 13:03:55 INFO Pause requested by backend response (ignored)
+2026-02-22 13:04:08 ERROR Failed to push news: timed out
+2026-02-22 13:04:08 INFO Pause requested by backend response (ignored)
+2026-02-22 13:04:21 ERROR Failed to push news: timed out
+2026-02-22 13:04:21 INFO Pause requested by backend response (ignored)
+2026-02-22 13:04:33 ERROR Failed to push news: timed out
+2026-02-22 13:04:33 INFO Pause requested by backend response (ignored)
+2026-02-22 13:04:46 ERROR Failed to push news: timed out
+2026-02-22 13:04:46 INFO Pause requested by backend response (ignored)
+2026-02-22 13:04:59 ERROR Failed to push news: timed out
+2026-02-22 13:04:59 INFO Pause requested by backend response (ignored)
+2026-02-22 13:05:12 ERROR Failed to push news: timed out
+2026-02-22 13:05:12 INFO Pause requested by backend response (ignored)
+2026-02-22 13:05:29 ERROR Failed to push news: timed out
+2026-02-22 13:05:29 INFO Pause requested by backend response (ignored)
+2026-02-22 13:05:41 ERROR Failed to push news: timed out
+2026-02-22 13:05:41 INFO Pause requested by backend response (ignored)
+2026-02-22 13:05:56 ERROR Failed to push news: timed out
+2026-02-22 13:05:56 INFO Pause requested by backend response (ignored)
+2026-02-22 13:06:14 ERROR Failed to push news: timed out
+2026-02-22 13:06:14 INFO Pause requested by backend response (ignored)
+2026-02-22 13:06:29 ERROR Failed to push news: timed out
+2026-02-22 13:06:29 INFO Pause requested by backend response (ignored)
+2026-02-22 13:06:42 ERROR Failed to push news: timed out
+2026-02-22 13:06:42 INFO Pause requested by backend response (ignored)
+2026-02-22 13:06:55 ERROR Failed to push news: timed out
+2026-02-22 13:06:55 INFO Pause requested by backend response (ignored)
+2026-02-22 13:07:08 ERROR Failed to push news: timed out
+2026-02-22 13:07:08 INFO Pause requested by backend response (ignored)
+2026-02-22 13:07:20 ERROR Failed to push news: timed out
+2026-02-22 13:07:20 INFO Pause requested by backend response (ignored)
+2026-02-22 13:07:33 ERROR Failed to push news: timed out
+2026-02-22 13:07:33 INFO Pause requested by backend response (ignored)
+2026-02-22 13:07:46 ERROR Failed to push news: timed out
+2026-02-22 13:07:46 INFO Pause requested by backend response (ignored)
+2026-02-22 13:07:59 ERROR Failed to push news: timed out
+2026-02-22 13:07:59 INFO Pause requested by backend response (ignored)
+2026-02-22 13:08:01 INFO Iteration start
+2026-02-22 13:08:02 INFO Found 37 links
+2026-02-22 13:08:12 ERROR Failed to push news: timed out
+2026-02-22 13:08:12 INFO Pause requested by backend response (ignored)
+2026-02-22 13:08:15 ERROR Failed to push news: timed out
+2026-02-22 13:08:15 INFO Pause requested by backend response
+2026-02-22 13:08:24 ERROR Failed to push news: timed out
+2026-02-22 13:08:24 INFO Pause requested by backend response (ignored)
+2026-02-22 13:08:37 ERROR Failed to push news: timed out
+2026-02-22 13:08:37 INFO Pause requested by backend response (ignored)
+2026-02-22 13:08:49 ERROR Failed to push news: timed out
+2026-02-22 13:08:49 INFO Pause requested by backend response (ignored)
+2026-02-22 13:09:02 ERROR Failed to push news: timed out
+2026-02-22 13:09:02 INFO Pause requested by backend response (ignored)
+2026-02-22 13:09:14 ERROR Failed to push news: timed out
+2026-02-22 13:09:14 INFO Pause requested by backend response (ignored)
+2026-02-22 13:09:27 ERROR Failed to push news: timed out
+2026-02-22 13:09:27 INFO Pause requested by backend response (ignored)
+2026-02-22 13:09:40 ERROR Failed to push news: timed out
+2026-02-22 13:09:40 INFO Pause requested by backend response (ignored)
+2026-02-22 13:09:52 ERROR Failed to push news: timed out
+2026-02-22 13:09:52 INFO Pause requested by backend response (ignored)
+2026-02-22 13:10:08 ERROR Failed to push news: timed out
+2026-02-22 13:10:08 INFO Pause requested by backend response (ignored)
+2026-02-22 13:10:21 ERROR Failed to push news: timed out
+2026-02-22 13:10:21 INFO Pause requested by backend response (ignored)
+2026-02-22 13:10:33 ERROR Failed to push news: timed out
+2026-02-22 13:10:33 INFO Pause requested by backend response (ignored)
+2026-02-22 13:10:47 ERROR Failed to push news: timed out
+2026-02-22 13:10:47 INFO Pause requested by backend response (ignored)
+2026-02-22 13:10:59 ERROR Failed to push news: timed out
+2026-02-22 13:10:59 INFO Pause requested by backend response (ignored)
+2026-02-22 13:11:12 ERROR Failed to push news: timed out
+2026-02-22 13:11:12 INFO Pause requested by backend response (ignored)
+2026-02-22 13:11:25 ERROR Failed to push news: timed out
+2026-02-22 13:11:25 INFO Pause requested by backend response (ignored)
+2026-02-22 13:11:37 ERROR Failed to push news: timed out
+2026-02-22 13:11:37 INFO Pause requested by backend response (ignored)
+2026-02-22 13:11:50 ERROR Failed to push news: timed out
+2026-02-22 13:11:50 INFO Pause requested by backend response (ignored)
+2026-02-22 13:11:50 INFO Iteration finished: saved 37
+2026-02-22 13:13:15 INFO Iteration start
+2026-02-22 13:13:17 INFO Found 37 links
+2026-02-22 13:13:29 ERROR Failed to push news: timed out
+2026-02-22 13:13:29 INFO Pause requested by backend response
+2026-02-22 13:16:50 INFO Iteration start
+2026-02-22 13:16:52 INFO Found 37 links
+2026-02-22 13:17:05 ERROR Failed to push news: timed out
+2026-02-22 13:17:05 INFO Pause requested by backend response (ignored)
+2026-02-22 13:17:17 ERROR Failed to push news: timed out
+2026-02-22 13:17:17 INFO Pause requested by backend response (ignored)
+2026-02-22 13:17:30 ERROR Failed to push news: timed out
+2026-02-22 13:17:30 INFO Pause requested by backend response (ignored)
+2026-02-22 13:17:43 ERROR Failed to push news: timed out
+2026-02-22 13:17:43 INFO Pause requested by backend response (ignored)
+2026-02-22 13:17:56 ERROR Failed to push news: timed out
+2026-02-22 13:17:56 INFO Pause requested by backend response (ignored)
+2026-02-22 13:18:09 ERROR Failed to push news: timed out
+2026-02-22 13:18:09 INFO Pause requested by backend response (ignored)
+2026-02-22 13:18:21 ERROR Failed to push news: timed out
+2026-02-22 13:18:21 INFO Pause requested by backend response (ignored)
+2026-02-22 13:18:29 INFO Iteration start
+2026-02-22 13:18:31 INFO Found 37 links
+2026-02-22 13:18:34 ERROR Failed to push news: timed out
+2026-02-22 13:18:34 INFO Pause requested by backend response (ignored)
+2026-02-22 13:18:43 ERROR Failed to push news: timed out
+2026-02-22 13:18:43 INFO Pause requested by backend response
+2026-02-22 13:18:47 ERROR Failed to push news: timed out
+2026-02-22 13:18:47 INFO Pause requested by backend response (ignored)
+2026-02-22 13:18:59 ERROR Failed to push news: timed out
+2026-02-22 13:18:59 INFO Pause requested by backend response (ignored)
+2026-02-22 13:19:12 ERROR Failed to push news: timed out
+2026-02-22 13:19:12 INFO Pause requested by backend response (ignored)
+2026-02-22 13:19:25 ERROR Failed to push news: timed out
+2026-02-22 13:19:25 INFO Pause requested by backend response (ignored)
+2026-02-22 13:19:37 ERROR Failed to push news: timed out
+2026-02-22 13:19:37 INFO Pause requested by backend response (ignored)
+2026-02-22 13:19:50 ERROR Failed to push news: timed out
+2026-02-22 13:19:50 INFO Pause requested by backend response (ignored)
+2026-02-22 13:20:02 ERROR Failed to push news: timed out
+2026-02-22 13:20:02 INFO Pause requested by backend response (ignored)
+2026-02-22 13:20:15 ERROR Failed to push news: timed out
+2026-02-22 13:20:15 INFO Pause requested by backend response (ignored)
+2026-02-22 13:20:27 ERROR Failed to push news: timed out
+2026-02-22 13:20:27 INFO Pause requested by backend response (ignored)
+2026-02-22 13:20:41 ERROR Failed to push news: timed out
+2026-02-22 13:20:41 INFO Pause requested by backend response (ignored)
+2026-02-22 13:20:54 ERROR Failed to push news: timed out
+2026-02-22 13:20:54 INFO Pause requested by backend response (ignored)
+2026-02-22 13:21:09 ERROR Failed to push news: timed out
+2026-02-22 13:21:09 INFO Pause requested by backend response (ignored)
+2026-02-22 13:21:22 ERROR Failed to push news: timed out
+2026-02-22 13:21:22 INFO Pause requested by backend response (ignored)
+2026-02-22 13:21:35 ERROR Failed to push news: timed out
+2026-02-22 13:21:35 INFO Pause requested by backend response (ignored)
+2026-02-22 13:21:48 ERROR Failed to push news: timed out
+2026-02-22 13:21:48 INFO Pause requested by backend response (ignored)
+2026-02-22 13:22:01 ERROR Failed to push news: timed out
+2026-02-22 13:22:01 INFO Pause requested by backend response (ignored)
+2026-02-22 13:22:13 ERROR Failed to push news: timed out
+2026-02-22 13:22:13 INFO Pause requested by backend response (ignored)
+2026-02-22 13:22:25 ERROR Failed to push news: timed out
+2026-02-22 13:22:25 INFO Pause requested by backend response (ignored)
+2026-02-22 13:22:38 ERROR Failed to push news: timed out
+2026-02-22 13:22:38 INFO Pause requested by backend response (ignored)
+2026-02-22 13:22:50 ERROR Failed to push news: timed out
+2026-02-22 13:22:50 INFO Pause requested by backend response (ignored)
+2026-02-22 13:23:03 ERROR Failed to push news: timed out
+2026-02-22 13:23:03 INFO Pause requested by backend response (ignored)
+2026-02-22 13:23:16 ERROR Failed to push news: timed out
+2026-02-22 13:23:16 INFO Pause requested by backend response (ignored)
+2026-02-22 13:23:29 ERROR Failed to push news: timed out
+2026-02-22 13:23:29 INFO Pause requested by backend response (ignored)
+2026-02-22 13:23:42 ERROR Failed to push news: timed out
+2026-02-22 13:23:42 INFO Pause requested by backend response (ignored)
+2026-02-22 13:23:43 INFO Iteration start
+2026-02-22 13:23:45 INFO Found 36 links
+2026-02-26 11:51:16 INFO Iteration start
+2026-02-26 11:51:18 INFO Found 36 links
+2026-02-26 11:51:25 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:51:33 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:51:39 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:51:46 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:51:53 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:00 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:07 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:14 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:21 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:28 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:35 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:42 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:48 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:52:55 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:02 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:08 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:15 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:22 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:29 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:36 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:43 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:50 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:53:56 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-02-26 11:54:03 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
