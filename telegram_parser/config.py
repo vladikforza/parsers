@@ -37,8 +37,8 @@ def resolve_path(path_str):
     return BASE_DIR / path
 
 
-API_ID = _get_env("API_ID", 21589677, int)
-API_HASH = _get_env("API_HASH", "2ada8f50499f2c254b87134fd925609f")
+API_ID = _get_env("API_ID", None, int)
+API_HASH = _get_env("API_HASH", None)
 SESSION_PATH = _get_env("SESSION_PATH", "data/telegram.session")
 
 CHANNELS_PATH = _get_env("CHANNELS_PATH", "data/channels.txt")

@@ -1,0 +1,16 @@
+.git
+.gitignore
+.venv
+__pycache__/
+*.py[cod]
+*.log
+
+lenta/lenta_parser/data/
+lenta/lenta_parser/logs/
+ria/ria_parser/data/
+ria/ria_parser/logs/
+telegram_parser/data/telegram.session
+telegram_parser/data/telegram_posts/
+
+TestApp-main/
+rss/__pycache__/

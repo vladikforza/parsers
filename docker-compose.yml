@@ -1,0 +1,55 @@
+services:
+  rss-parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python main.py
+    working_dir: /app/rss
+    env_file:
+      - .env.example
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    volumes:
+      - ./rss/config:/app/rss/config
+
+  lenta-parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m lenta.lenta_parser.runner
+    env_file:
+      - .env.example
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    volumes:
+      - ./lenta/lenta_parser/data:/app/lenta/lenta_parser/data
+      - ./lenta/lenta_parser/logs:/app/lenta/lenta_parser/logs
+
+  ria-parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m ria.ria_parser.runner
+    env_file:
+      - .env.example
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    volumes:
+      - ./ria/ria_parser/data:/app/ria/ria_parser/data
+      - ./ria/ria_parser/logs:/app/ria/ria_parser/logs
+
+  telegram-parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python -m telegram_parser.runner
+    env_file:
+      - .env.example
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    volumes:
+      - ./telegram_parser/data:/app/telegram_parser/data
