@@ -21,6 +21,7 @@ def main() -> int:
         [sys.executable, "-m", "lenta.lenta_parser.runner"],
         [sys.executable, "-m", "ria.ria_parser.runner"],
         [sys.executable, "-m", "telegram_parser.runner"],
+        [sys.executable, "rss/main.py"],
     ]
 
     processes = [_start_process(cmd, root) for cmd in commands]

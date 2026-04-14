@@ -678,3 +678,30 @@
 2026-02-26 11:53:50 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
 2026-02-26 11:53:56 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
 2026-02-26 11:54:03 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+2026-04-14 18:34:05 INFO Run forever with interval 5 minutes
+2026-04-14 18:34:05 INFO Iteration start
+2026-04-14 18:34:22 INFO Found 38 links
+2026-04-14 18:34:30 INFO Pause requested by backend response (ignored)
+2026-04-14 18:34:32 INFO Pause requested by backend response (ignored)
+2026-04-14 18:34:38 INFO Pause requested by backend response (ignored)
+2026-04-14 18:34:41 INFO Pause requested by backend response (ignored)
+2026-04-14 18:34:49 INFO Pause requested by backend response (ignored)
+2026-04-14 18:35:01 INFO Pause requested by backend response (ignored)
+2026-04-14 18:35:07 INFO Pause requested by backend response (ignored)
+2026-04-14 18:35:16 INFO Pause requested by backend response (ignored)
+2026-04-14 18:35:26 INFO Pause requested by backend response (ignored)
+2026-04-14 18:35:28 INFO Pause requested by backend response (ignored)
+2026-04-14 18:35:31 INFO Iteration finished: saved 38
+2026-04-14 18:40:31 INFO Iteration start
+2026-04-14 18:40:32 INFO Found 38 links
+2026-04-14 18:40:36 INFO Pause requested by backend response (ignored)
+2026-04-14 18:40:37 INFO Pause requested by backend response (ignored)
+2026-04-14 18:40:39 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:03 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:07 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:18 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:19 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:21 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:33 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:35 INFO Pause requested by backend response (ignored)
+2026-04-14 18:41:35 INFO Iteration finished: saved 38

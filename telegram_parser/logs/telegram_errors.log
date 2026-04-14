@@ -1,0 +1,17 @@
+2026-04-14 21:50:15,603 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:17,433 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:19,078 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:20,671 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:22,830 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:24,453 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:26,643 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:50:28,548 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:04,348 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:06,377 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:07,953 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:10,008 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:12,172 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:14,272 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 21:51:16,211 ERROR telegram_parser.parser HTTP error pushing news: 503 
+2026-04-14 18:57:56,550 ERROR telegram_parser.parser Failed to push news: <urlopen error [Errno 111] Connection refused>
+2026-04-14 18:57:57,023 ERROR telegram_parser.parser Failed to push news: Remote end closed connection without response

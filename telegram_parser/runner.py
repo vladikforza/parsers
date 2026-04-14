@@ -13,6 +13,13 @@ from . import storage
 
 def _setup_logging():
     handlers = [logging.StreamHandler()]
+    error_log_path = config.resolve_path(config.ERROR_LOG_PATH)
+    error_log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    error_handler = logging.FileHandler(error_log_path, encoding="utf-8")
+    error_handler.setLevel(logging.WARNING)
+    handlers.append(error_handler)
+
     if config.LOG_PATH:
         log_path = config.resolve_path(config.LOG_PATH)
         log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -82,7 +89,7 @@ def _run_iteration() -> bool:
             if channel_pause:
                 pause_requested = True
                 break
-            time.sleep(1)
+            time.sleep(config.CHANNEL_SWITCH_DELAY_SECONDS)
     finally:
         client.disconnect()
 
@@ -94,7 +101,11 @@ def run_forever():
     _setup_logging()
     logger = logging.getLogger(__name__)
     while True:
-        pause_requested = _run_iteration()
+        try:
+            pause_requested = _run_iteration()
+        except Exception:
+            logger.exception("telegram parser iteration failed")
+            raise
         if pause_requested:
             logger.info("sleeping for 5 minutes due to backend response")
             time.sleep(5 * 60)

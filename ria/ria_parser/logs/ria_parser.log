@@ -254,3 +254,12 @@
 2026-02-26 11:59:36 ERROR Failed to push news: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
 2026-02-26 11:59:39 INFO Stop iteration: older than 2026-02-24T11:57:08.995843
 2026-02-26 11:59:39 INFO Iteration finished: saved 20
+2026-04-14 18:34:05 INFO Run forever with interval 5 minutes
+2026-04-14 18:34:05 INFO Iteration start
+2026-04-14 18:34:06 INFO Found 23 links
+2026-04-14 18:34:08 INFO Pause requested by backend response
+2026-04-14 18:39:08 INFO Iteration start
+2026-04-14 18:39:09 INFO Found 23 links
+2026-04-14 18:39:10 INFO Pause requested by backend response
+2026-04-14 18:44:10 INFO Iteration start
+2026-04-14 18:44:11 INFO Found 23 links
