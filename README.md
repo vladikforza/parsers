@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ### Вариант B. Запуск в Docker
 1. Заполните env-файлы:
-- для `rss-parser`, `lenta-parser`, `ria-parser` используется `.env.example`;
+- для `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` используется `.env.example`;
 - для `telegram-parser` используется `.env`.
 2. Заполните `API_ID` и `API_HASH` для Telegram, а также остальные обязательные параметры из раздела ниже.
 3. Убедитесь, что backend API доступен из контейнера по `NEWS_API_URL`.
@@ -53,11 +53,14 @@ pip install -r requirements.txt
 docker compose up --build -d
 ```
 
-Каждый парсер запускается в отдельном контейнере:
+Каждый компонент запускается в отдельном контейнере:
 - `rss-parser`
+- `rss-ui`
 - `lenta-parser`
 - `ria-parser`
 - `telegram-parser`
+
+UI будет доступен по адресу `http://localhost:9000`.
 
 Полезные команды:
 ```bash
@@ -78,6 +81,7 @@ python -m lenta.lenta_parser.runner
 python -m ria.ria_parser.runner
 python -m telegram_parser.runner
 python rss/main.py
+python rss/ui.py
 ```
 
 ## 6) Пример работы
@@ -98,13 +102,14 @@ python rss/main.py
 
 ### Что запускается в контейнерах
 
-Через `docker compose` поднимаются 4 отдельных сервиса:
+Через `docker compose` поднимаются 5 отдельных сервисов:
 - `rss-parser`
+- `rss-ui`
 - `lenta-parser`
 - `ria-parser`
 - `telegram-parser`
 
-Каждый сервис запускает свой парсер в отдельном контейнере, а результаты работы сохраняются в примонтированные каталоги проекта на хосте.
+Каждый сервис запускает свой компонент в отдельном контейнере, а результаты работы сохраняются в примонтированные каталоги проекта на хосте.
 
 ### Что нужно установить
 
@@ -121,7 +126,7 @@ docker compose version
 ### Подготовка конфигурации
 
 Контейнеры используют разные env-файлы:
-- `rss-parser`, `lenta-parser`, `ria-parser` используют `.env.example`;
+- `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` используют `.env.example`;
 - `telegram-parser` использует `.env`.
 
 Минимально нужно проверить и при необходимости заполнить следующие переменные.
@@ -227,7 +232,7 @@ ERROR_LOG_PATH=logs/telegram_errors.log
 
 ### Первый запуск
 
-1. Проверьте `.env.example` для `rss-parser`, `lenta-parser`, `ria-parser` и `.env` для `telegram-parser`.
+1. Проверьте `.env.example` для `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` и `.env` для `telegram-parser`.
 2. Убедитесь, что backend доступен по адресу, указанному в переменных окружения.
 3. При необходимости отредактируйте `rss/config/sources.yaml`.
 4. Запустите сборку и старт контейнеров:
@@ -257,6 +262,7 @@ docker compose logs -f
 Посмотреть логи конкретного сервиса:
 ```bash
 docker compose logs -f rss-parser
+docker compose logs -f rss-ui
 docker compose logs -f lenta-parser
 docker compose logs -f ria-parser
 docker compose logs -f telegram-parser
@@ -336,7 +342,7 @@ docker compose up --build -d
 
 Если вы изменили только `.env.example` или `rss/config/sources.yaml`:
 - для применения env-переменных лучше перезапустить нужные сервисы;
-- для RSS-конфига обычно достаточно перезапуска `rss-parser`.
+- для RSS-конфига обычно достаточно перезапуска `rss-parser` и `rss-ui`.
 
 Если вы изменили `.env` для `telegram-parser`:
 - перезапустите `telegram-parser`, чтобы он перечитал новые значения.
@@ -344,6 +350,7 @@ docker compose up --build -d
 Примеры:
 ```bash
 docker compose restart rss-parser
+docker compose restart rss-ui
 docker compose restart lenta-parser ria-parser telegram-parser
 ```
 
@@ -362,4 +369,9 @@ docker compose restart lenta-parser ria-parser telegram-parser
 RSS-парсер в текущей реализации пишет логи в stdout контейнера, поэтому их удобнее смотреть через:
 ```bash
 docker compose logs -f rss-parser
+```
+
+Для UI используйте:
+```bash
+docker compose logs -f rss-ui
 ```

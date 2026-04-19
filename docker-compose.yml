@@ -13,6 +13,22 @@ services:
     volumes:
       - ./rss/config:/app/rss/config
 
+  rss-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python ui.py
+    working_dir: /app/rss
+    env_file:
+      - .env.example
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./rss/config:/app/rss/config
+
   lenta-parser:
     build:
       context: .
