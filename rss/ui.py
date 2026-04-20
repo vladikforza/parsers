@@ -625,4 +625,4 @@ HTML_PAGE = """<!doctype html>
 
 
 if __name__ == "__main__":
-    uvicorn.run("ui:app", host="127.0.0.1", port=9000, reload=False)
+    uvicorn.run("ui:app", host="127.0.0.1", port=9000, reload=True)

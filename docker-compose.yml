@@ -25,7 +25,7 @@ services:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
     ports:
-      - "9000:9000"
+      - "${RSS_UI_PORT:-9000}:9000"
     volumes:
       - ./rss/config:/app/rss/config
 
