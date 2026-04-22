@@ -42,12 +42,10 @@ pip install -r requirements.txt
 - `rss/config/sources.yaml` (в текущей реализации файл имеет JSON-структуру и читается как JSON)
 
 ### Вариант B. Запуск в Docker
-1. Заполните env-файлы:
-- для `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` используется `.env.example`;
-- для `telegram-parser` используется `.env`.
+1. Заполните `.env` на основе `.env.example`.
 2. Заполните `API_ID` и `API_HASH` для Telegram, а также остальные обязательные параметры из раздела ниже.
 3. Убедитесь, что backend API доступен из контейнера по `NEWS_API_URL`.
-   По умолчанию в `.env` для `telegram-parser` и в `.env.example` для остальных сервисов используется `http://host.docker.internal:8080/test/save_news`.
+   По умолчанию в `.env` используется `http://host.docker.internal:8080/test/save_news`.
 4. Соберите и запустите контейнеры:
 ```bash
 docker compose up --build -d
@@ -125,9 +123,9 @@ docker compose version
 
 ### Подготовка конфигурации
 
-Контейнеры используют разные env-файлы:
-- `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` используют `.env.example`;
-- `telegram-parser` использует `.env`.
+Все контейнеры используют один env-файл:
+- `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` и `telegram-parser` используют `.env`.
+- `.env.example` хранится только как шаблон для заполнения `.env`.
 
 Минимально нужно проверить и при необходимости заполнить следующие переменные.
 
@@ -162,7 +160,7 @@ docker compose version
 - `TELEGRAM_BOT_TOKEN`, если используется авторизация ботом
 
 Важно:
-- по умолчанию в `.env` для `telegram-parser` и в `.env.example` для остальных сервисов используется `host.docker.internal`, то есть backend ожидается доступным с хост-машины;
+- по умолчанию в `.env` используется `host.docker.internal`, то есть backend ожидается доступным с хост-машины;
 - если backend работает в другом контейнере или на другом сервере, нужно заменить `NEWS_API_URL` и `BACKEND_BASE_URL` на корректные адреса;
 - `telegram-parser` не сможет стартовать без валидных `API_ID` и `API_HASH`.
 
@@ -232,7 +230,7 @@ ERROR_LOG_PATH=logs/telegram_errors.log
 
 ### Первый запуск
 
-1. Проверьте `.env.example` для `rss-parser`, `rss-ui`, `lenta-parser`, `ria-parser` и `.env` для `telegram-parser`.
+1. Проверьте `.env` для всех сервисов. Если файла нет, создайте его на основе `.env.example`.
 2. Убедитесь, что backend доступен по адресу, указанному в переменных окружения.
 3. При необходимости отредактируйте `rss/config/sources.yaml`.
 4. Запустите сборку и старт контейнеров:
@@ -340,7 +338,7 @@ docker compose up -d telegram-parser
 docker compose up --build -d
 ```
 
-Если вы изменили только `.env.example` или `rss/config/sources.yaml`:
+Если вы изменили только `.env` или `rss/config/sources.yaml`:
 - для применения env-переменных лучше перезапустить нужные сервисы;
 - для RSS-конфига обычно достаточно перезапуска `rss-parser` и `rss-ui`.
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import logging
-import os
 from typing import Any, Dict
 
 import httpx
@@ -14,9 +13,9 @@ class BackendClient:
     HTTP client for the provided backend.
     """
 
-    def __init__(self, base_url: str | None = None, endpoint: str = "/test/save_news", timeout: int = 10) -> None:
-        self.base_url = (base_url or os.getenv("BACKEND_BASE_URL") or "http://localhost:8080").rstrip("/")
-        self.endpoint = endpoint or "/test/save_news"
+    def __init__(self, base_url: str, endpoint: str, timeout: int) -> None:
+        self.base_url = base_url.rstrip("/")
+        self.endpoint = endpoint
         self.timeout = timeout
         self._client = httpx.AsyncClient(timeout=self.timeout)
 

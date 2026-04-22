@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import asyncio
 import logging
-import os
 from typing import List
 
 from backend_client import BackendClient
@@ -10,35 +9,22 @@ from config_loader import load_sources
 from core.models import SourceConfig
 from gnews_adapter import fetch_and_parse_gnews
 from rss_parser import fetch_and_parse
+from settings import Config, get_config
 
 
-def env_int(key: str, default: int) -> int:
-    try:
-        return int(os.getenv(key, default))
-    except Exception:
-        return default
-
-
-def get_config():
-    return {
-        "sleep_seconds": env_int("SLEEP_SECONDS", 300),
-        "request_timeout": env_int("REQUEST_TIMEOUT", 10),
-        "max_retries": env_int("MAX_RETRIES", 3),
-        "backend_base_url": os.getenv("BACKEND_BASE_URL", "http://localhost:8080"),
-        "backend_endpoint": os.getenv("BACKEND_SAVE_NEWS_ENDPOINT", "/test/save_news"),
-        "log_level": os.getenv("LOG_LEVEL", "INFO").upper(),
-    }
-
-
-async def process_source(source: SourceConfig, client: BackendClient, cfg: dict) -> None:
+async def process_source(source: SourceConfig, client: BackendClient, cfg: Config) -> None:
     logging.info("Processing source: %s", source.name)
     if source.type == "gnews":
         items = await fetch_and_parse_gnews(
-            source, request_timeout=cfg["request_timeout"], max_retries=cfg["max_retries"]
+            source,
+            request_timeout=cfg.request_timeout,
+            max_retries=cfg.max_retries,
         )
     else:
         items = await fetch_and_parse(
-            source, request_timeout=cfg["request_timeout"], max_retries=cfg["max_retries"]
+            source,
+            request_timeout=cfg.request_timeout,
+            max_retries=cfg.max_retries,
         )
 
     items_sorted = sorted(items, key=lambda i: i.date, reverse=True)
@@ -68,12 +54,12 @@ async def process_source(source: SourceConfig, client: BackendClient, cfg: dict)
 
 async def main() -> None:
     cfg = get_config()
-    setup_logging(cfg["log_level"])
+    setup_logging(cfg.log_level)
     logging.info("Parser started")
     client = BackendClient(
-        base_url=cfg["backend_base_url"],
-        endpoint=cfg["backend_endpoint"],
-        timeout=cfg["request_timeout"],
+        base_url=cfg.backend_base_url,
+        endpoint=cfg.backend_endpoint,
+        timeout=cfg.request_timeout,
     )
     try:
         while True:
@@ -84,8 +70,8 @@ async def main() -> None:
                     await process_source(source, client, cfg)
                 except Exception as exc:  # noqa: BLE001
                     logging.warning("Source %s failed: %s", source.name, exc)
-            logging.info("Sleeping for %s seconds", cfg["sleep_seconds"])
-            await asyncio.sleep(cfg["sleep_seconds"])
+            logging.info("Sleeping for %s seconds", cfg.sleep_seconds)
+            await asyncio.sleep(cfg.sleep_seconds)
     finally:
         await client.close()
 
