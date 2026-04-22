@@ -57,9 +57,8 @@ async def main() -> None:
     setup_logging(cfg.log_level)
     logging.info("Parser started")
     client = BackendClient(
-        base_url=cfg.backend_base_url,
-        endpoint=cfg.backend_endpoint,
-        timeout=cfg.request_timeout,
+        url=cfg.news_api_url,
+        timeout=cfg.news_api_timeout,
     )
     try:
         while True:

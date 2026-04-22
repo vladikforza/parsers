@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .env
 api.txt
+telegram_run1.err
+telegram_run1.out
+telegram_run2.err
+telegram_run2.out

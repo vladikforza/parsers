@@ -11,15 +11,15 @@
 - Парсинг RSS через `feedparser`.
 - Нормализация текста, дат и источников в общий формат.
 - Поддержка GNews API.
-- Отправка в backend через единый `BackendClient`.
+- Отправка в backend через единый `NEWS_API_URL`.
 - Периодический цикл обработки включённых источников из `config/sources.yaml`.
 
 ## 3) Настройка
 RSS-парсер берёт runtime-настройки только из переменных окружения. В Docker они передаются через корневой `.env`.
 
 Обязательные переменные:
-- `BACKEND_BASE_URL` - базовый URL backend, например `http://host.docker.internal:8080`.
-- `BACKEND_SAVE_NEWS_ENDPOINT` - endpoint сохранения новости, например `/test/save_news`.
+- `NEWS_API_URL` - полный URL backend endpoint, например `http://host.docker.internal:8080/test/save_news`.
+- `NEWS_API_TIMEOUT` - таймаут отправки новости в backend в секундах.
 - `SLEEP_SECONDS` - пауза между циклами опроса.
 - `REQUEST_TIMEOUT` - таймаут HTTP-запросов в секундах.
 - `MAX_RETRIES` - число повторных попыток загрузки источника.

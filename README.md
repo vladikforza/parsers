@@ -32,7 +32,7 @@ pip install -r requirements.txt
 - Lenta: `LENTA_SECTION_URL`, `LENTA_DAYS_BACK`, `LENTA_INTERVAL_MINUTES` и другие.
 - RIA: `RIA_SECTION_URL`, `RIA_DAYS_BACK`, `RIA_INTERVAL_MINUTES` и другие.
 - Telegram: `API_ID`, `API_HASH`, `CHANNELS_PATH`, `POLL_INTERVAL_MINUTES` и другие.
-- RSS: `BACKEND_BASE_URL`, `BACKEND_SAVE_NEWS_ENDPOINT`, `SLEEP_SECONDS`, `REQUEST_TIMEOUT`, `MAX_RETRIES`, `LOG_LEVEL`.
+- RSS: `NEWS_API_URL`, `NEWS_API_TIMEOUT`, `SLEEP_SECONDS`, `REQUEST_TIMEOUT`, `MAX_RETRIES`, `LOG_LEVEL`.
 
 Полные списки параметров смотрите в файлах:
 - `lenta/lenta_parser/config.py`
@@ -134,8 +134,8 @@ docker compose version
 - `NEWS_API_TIMEOUT` - таймаут запроса к backend в секундах
 
 Для `rss-parser`:
-- `BACKEND_BASE_URL` - базовый адрес backend
-- `BACKEND_SAVE_NEWS_ENDPOINT` - endpoint сохранения новости
+- `NEWS_API_URL` - полный URL backend endpoint для сохранения новости
+- `NEWS_API_TIMEOUT` - таймаут запроса к backend в секундах
 - `SLEEP_SECONDS` - пауза между циклами опроса RSS
 - `REQUEST_TIMEOUT` - таймаут HTTP-запросов
 - `MAX_RETRIES` - число повторных попыток
@@ -161,7 +161,7 @@ docker compose version
 
 Важно:
 - по умолчанию в `.env` используется `host.docker.internal`, то есть backend ожидается доступным с хост-машины;
-- если backend работает в другом контейнере или на другом сервере, нужно заменить `NEWS_API_URL` и `BACKEND_BASE_URL` на корректные адреса;
+- если backend работает в другом контейнере или на другом сервере, нужно заменить `NEWS_API_URL` на корректный адрес;
 - `telegram-parser` не сможет стартовать без валидных `API_ID` и `API_HASH`.
 
 Обязательные параметры `telegram-parser`
@@ -322,7 +322,6 @@ docker compose up -d telegram-parser
 
 В текущем примере используются адреса:
 - `NEWS_API_URL=http://host.docker.internal:8080/test/save_news`
-- `BACKEND_BASE_URL=http://host.docker.internal:8080`
 
 Это подходит, когда backend запущен на той же машине, что и Docker.
 

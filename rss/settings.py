@@ -9,8 +9,8 @@ class Config:
     sleep_seconds: int
     request_timeout: int
     max_retries: int
-    backend_base_url: str
-    backend_endpoint: str
+    news_api_url: str
+    news_api_timeout: int
     log_level: str
 
 
@@ -34,7 +34,7 @@ def get_config() -> Config:
         sleep_seconds=_required_int("SLEEP_SECONDS"),
         request_timeout=_required_int("REQUEST_TIMEOUT"),
         max_retries=_required_int("MAX_RETRIES"),
-        backend_base_url=_required_env("BACKEND_BASE_URL"),
-        backend_endpoint=_required_env("BACKEND_SAVE_NEWS_ENDPOINT"),
+        news_api_url=_required_env("NEWS_API_URL"),
+        news_api_timeout=_required_int("NEWS_API_TIMEOUT"),
         log_level=_required_env("LOG_LEVEL").upper(),
     )

@@ -18,6 +18,18 @@ def _get_env(name, default=None, cast=None):
         return default
 
 
+def _get_required_env(name, cast=None):
+    value = os.getenv(name)
+    if value is None or value.strip() == "":
+        raise RuntimeError(f"Required environment variable {name} is not set")
+    if cast is None:
+        return value
+    try:
+        return cast(value)
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError(f"Environment variable {name} must be valid") from exc
+
+
 def _parse_float_pair(value, default):
     if not value:
         return default
@@ -37,8 +49,8 @@ def resolve_path(path_str):
     return BASE_DIR / path
 
 
-NEWS_API_URL = _get_env("NEWS_API_URL", "http://localhost:8080/test/save_news")
-NEWS_API_TIMEOUT = _get_env("NEWS_API_TIMEOUT", 10, int)
+NEWS_API_URL = _get_required_env("NEWS_API_URL")
+NEWS_API_TIMEOUT = _get_required_env("NEWS_API_TIMEOUT", int)
 
 API_ID = _get_env("API_ID", None, int)
 API_HASH = _get_env("API_HASH", None)

@@ -13,9 +13,8 @@ class BackendClient:
     HTTP client for the provided backend.
     """
 
-    def __init__(self, base_url: str, endpoint: str, timeout: int) -> None:
-        self.base_url = base_url.rstrip("/")
-        self.endpoint = endpoint
+    def __init__(self, url: str, timeout: int) -> None:
+        self.url = url
         self.timeout = timeout
         self._client = httpx.AsyncClient(timeout=self.timeout)
 
@@ -28,9 +27,8 @@ class BackendClient:
             False -> backend responded with created=false (HTTP 200)
             None  -> transport/HTTP error, caller should continue
         """
-        url = f"{self.base_url}{self.endpoint}"
         try:
-            resp = await self._client.post(url, json=payload)
+            resp = await self._client.post(self.url, json=payload)
         except Exception as exc:  # noqa: BLE001
             logger.warning("Backend request failed: %s", exc)
             return None
